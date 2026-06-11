@@ -369,7 +369,7 @@
 
             <!-- Top Disclaimer Bar -->
             <div class="top-disclaimer">
-                <i class="fas fa-info-circle"></i> Nationalinsurancenumber.co is operated by a private company. You are able to apply directly with the JobCentre plus and HMRC where there will be no cost involved. We have no affiliations with any UK government body. For the official site please visit <a href="https://www.gov.uk" target="_blank" rel="noopener noreferrer">https://www.gov.uk</a>. <a href="#" class="disclaimer-more">Click here to find out more.</a>
+                <i class="fas fa-info-circle"></i>You are able to apply directly with the JobCentre plus and HMRC where there will be no cost involved. We have no affiliations with any UK government body. For the official site please visit <a href="https://www.gov.uk" target="_blank" rel="noopener noreferrer">https://www.gov.uk</a>. <a href="#" class="disclaimer-more">Click here to find out more.</a>
             </div>
 
             <!-- Main Sticky Header -->
