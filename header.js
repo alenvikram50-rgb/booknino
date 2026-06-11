@@ -1,22 +1,31 @@
-// header-footer.js - Combined Professional Header and Footer
+// header-footer.js - PRO Version with Guaranteed Sticky Header on All Devices
 // This script injects both the header and footer into any page where it is called
 
 (function() {
     // ========== HEADER INJECTION ==========
     const headerContainer = document.getElementById('header-container');
     if (headerContainer) {
-        // Header HTML with top disclaimer bar, logo, navigation, and mobile menu
         const headerHTML = `
             <style>
+                /* ========== RESET FOR HEADER AREA ========== */
+                #header-container {
+                    position: sticky;
+                    top: 0;
+                    z-index: 10000;
+                    margin: 0;
+                    padding: 0;
+                }
+                
                 /* ========== TOP DISCLAIMER BAR ========== */
                 .top-disclaimer {
                     background: #fef9e6;
                     border-bottom: 1px solid #f0d080;
-                    padding: 10px 24px;
+                    padding: 8px 24px;
                     text-align: center;
                     font-size: 0.75rem;
                     color: #7a5a20;
                     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                    line-height: 1.4;
                 }
                 .top-disclaimer a {
                     color: #b45309;
@@ -30,20 +39,31 @@
                 /* ========== PROFESSIONAL STICKY HEADER ========== */
                 .site-header {
                     background: #ffffff;
-                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
                     position: sticky;
                     top: 0;
-                    z-index: 1000;
+                    left: 0;
+                    right: 0;
+                    z-index: 9999;
                     border-bottom: 1px solid #eef2f8;
                     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                    /* Ensure sticky works properly */
-                    will-change: transform;
+                    /* CRITICAL for sticky on all devices */
+                    -webkit-position: sticky;
+                    position: -webkit-sticky;
+                    position: sticky;
+                    /* Ensure hardware acceleration */
+                    transform: translateZ(0);
+                    -webkit-transform: translateZ(0);
+                    will-change: position;
+                    /* Smooth shadow transition */
                     transition: box-shadow 0.3s ease;
                 }
-                /* Add shadow when header is stuck (optional enhancement) */
+                
+                /* Enhanced shadow when header is actively sticking */
                 .site-header.is-sticky {
-                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+                    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
                 }
+                
                 .header-container {
                     max-width: 1400px;
                     margin: 0 auto;
@@ -51,19 +71,23 @@
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    flex-wrap: wrap;
+                    flex-wrap: nowrap;
+                    min-height: 72px;
                 }
+                
                 .logo {
                     display: flex;
                     align-items: center;
                     gap: 10px;
                     text-decoration: none;
-                    padding: 18px 0;
+                    padding: 14px 0;
                     flex-shrink: 0;
+                    z-index: 2;
                 }
                 .logo-icon {
                     width: 40px;
                     height: 40px;
+                    min-width: 40px;
                     background: #1e3a5f;
                     border-radius: 12px;
                     display: flex;
@@ -79,17 +103,19 @@
                     font-size: 1.4rem;
                     letter-spacing: -0.3px;
                     color: #0f2b3f;
+                    white-space: nowrap;
                 }
                 .logo-text span {
                     font-weight: 400;
                     color: #6c7e94;
                     font-size: 1rem;
                 }
+                
                 .nav-menu {
                     display: flex;
                     align-items: center;
-                    gap: 6px;
-                    flex-wrap: wrap;
+                    gap: 4px;
+                    flex-wrap: nowrap;
                     justify-content: flex-end;
                 }
                 .nav-link {
@@ -111,12 +137,14 @@
                     color: white;
                     margin-left: 8px;
                     padding: 8px 22px;
+                    font-weight: 600;
                 }
                 .nav-link.cta:hover {
                     background: #0f2b48;
                     transform: translateY(-1px);
                     box-shadow: 0 6px 14px rgba(30,58,95,0.2);
                 }
+                
                 .dropdown {
                     position: relative;
                     display: inline-block;
@@ -132,10 +160,10 @@
                     position: absolute;
                     background: white;
                     min-width: 240px;
-                    box-shadow: 0 20px 35px -10px rgba(0,0,0,0.12);
+                    box-shadow: 0 20px 35px -10px rgba(0,0,0,0.15);
                     border-radius: 20px;
-                    z-index: 10;
-                    top: 110%;
+                    z-index: 100;
+                    top: 115%;
                     left: 0;
                     padding: 8px 0;
                     border: 1px solid #eef2f8;
@@ -157,6 +185,8 @@
                 .dropdown:hover .dropdown-content {
                     display: block;
                 }
+                
+                /* Mobile Toggle Button */
                 .mobile-toggle {
                     display: none;
                     background: #f8fafd;
@@ -164,12 +194,20 @@
                     border-radius: 50%;
                     width: 44px;
                     height: 44px;
+                    min-width: 44px;
                     font-size: 1.3rem;
                     cursor: pointer;
                     color: #1e3a5f;
                     align-items: center;
                     justify-content: center;
+                    z-index: 2;
+                    flex-shrink: 0;
                 }
+                .mobile-toggle:active {
+                    background: #e8f0fe;
+                }
+                
+                /* Mobile Navigation */
                 .mobile-nav {
                     display: none;
                     background: white;
@@ -177,18 +215,18 @@
                     max-height: 70vh;
                     overflow-y: auto;
                     border-top: 1px solid #eef2f8;
-                    /* Ensure mobile nav appears below sticky header */
                     position: relative;
                     z-index: 999;
+                    -webkit-overflow-scrolling: touch;
                 }
                 .mobile-nav.open {
                     display: block;
                 }
                 .mobile-nav-inner {
-                    padding: 20px 24px;
+                    padding: 16px 24px;
                     display: flex;
                     flex-direction: column;
-                    gap: 6px;
+                    gap: 4px;
                 }
                 .mobile-nav-link {
                     padding: 14px 0;
@@ -199,6 +237,7 @@
                     border-bottom: 1px solid #f0f4fa;
                     display: flex;
                     justify-content: space-between;
+                    align-items: center;
                 }
                 .mobile-nav-link i {
                     color: #8a9bb0;
@@ -207,49 +246,124 @@
                 .mobile-nav-link.cta-mobile {
                     background: #1e3a5f;
                     color: white;
-                    padding: 14px 20px;
+                    padding: 16px 24px;
                     border-radius: 60px;
                     text-align: center;
                     margin-top: 16px;
                     border-bottom: none;
                     justify-content: center;
+                    font-weight: 600;
+                    font-size: 1.05rem;
                 }
                 .mobile-dropdown-header {
                     display: flex;
                     justify-content: space-between;
+                    align-items: center;
                     padding: 14px 0;
                     font-weight: 600;
                     color: #1e3a5f;
                     border-bottom: 1px solid #f0f4fa;
                     cursor: pointer;
+                    user-select: none;
                 }
                 .mobile-submenu {
                     display: none;
                     padding-left: 20px;
                     background: #fafcff;
-                    border-radius: 20px;
+                    border-radius: 16px;
+                    margin: 4px 0;
                 }
                 .mobile-submenu a {
                     display: block;
                     padding: 12px 8px;
                     text-decoration: none;
                     color: #4a5b6e;
-                    font-size: 0.85rem;
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                    border-radius: 8px;
                 }
-                @media (max-width: 960px) {
+                .mobile-submenu a:active {
+                    background: #e8f0fe;
+                }
+                
+                /* ========== RESPONSIVE BREAKPOINTS ========== */
+                @media (max-width: 1024px) {
                     .nav-menu { display: none; }
-                    .mobile-toggle { display: flex; align-items: center; justify-content: center; }
+                    .mobile-toggle { display: flex; }
+                    .header-container {
+                        padding: 0 20px;
+                        min-height: 64px;
+                    }
+                    .logo-text { font-size: 1.3rem; }
                 }
+                
                 @media (max-width: 680px) {
-                    .header-container { padding: 0 20px; }
-                    .top-disclaimer { padding: 8px 16px; font-size: 0.7rem; }
-                    .logo-text { font-size: 1.2rem; }
-                    .logo-text span { font-size: 0.9rem; }
-                    .logo-icon { width: 34px; height: 34px; font-size: 12px; }
+                    .header-container { 
+                        padding: 0 16px; 
+                        min-height: 60px;
+                    }
+                    .top-disclaimer { 
+                        padding: 6px 16px; 
+                        font-size: 0.7rem; 
+                    }
+                    .logo-text { 
+                        font-size: 1.2rem; 
+                    }
+                    .logo-text span { 
+                        font-size: 0.85rem; 
+                    }
+                    .logo-icon { 
+                        width: 34px; 
+                        height: 34px; 
+                        min-width: 34px;
+                        font-size: 12px; 
+                    }
+                    .logo { padding: 10px 0; }
+                    .mobile-toggle {
+                        width: 40px;
+                        height: 40px;
+                        min-width: 40px;
+                        font-size: 1.2rem;
+                    }
                 }
+                
                 @media (max-width: 480px) {
+                    .header-container { 
+                        padding: 0 12px; 
+                        min-height: 56px;
+                    }
+                    .logo-text { 
+                        font-size: 1.1rem; 
+                    }
+                    .logo-text span { 
+                        font-size: 0.8rem; 
+                        display: none;
+                    }
+                    .logo-icon { 
+                        width: 30px; 
+                        height: 30px; 
+                        min-width: 30px;
+                        font-size: 11px; 
+                        border-radius: 8px;
+                    }
+                    .logo { gap: 6px; padding: 8px 0; }
+                    .mobile-nav-inner { padding: 12px 16px; }
+                    .mobile-nav-link { font-size: 0.95rem; padding: 12px 0; }
+                    .top-disclaimer { 
+                        padding: 6px 12px; 
+                        font-size: 0.65rem; 
+                    }
+                }
+                
+                @media (max-width: 360px) {
+                    .header-container { padding: 0 8px; }
                     .logo-text { font-size: 1rem; }
-                    .logo-text span { font-size: 0.8rem; }
+                    .logo-icon { 
+                        width: 28px; 
+                        height: 28px; 
+                        min-width: 28px;
+                        font-size: 10px; 
+                    }
                 }
             </style>
 
@@ -261,17 +375,17 @@
             <!-- Main Sticky Header -->
             <header class="site-header" id="stickyHeader">
                 <div class="header-container">
-                    <a href="index.html" class="logo">
+                    <a href="index.html" class="logo" aria-label="NI NO Home">
                         <div class="logo-icon">NI</div>
                         <div class="logo-text">NI NO <span>UK</span></div>
                     </a>
-                    <nav class="nav-menu">
+                    <nav class="nav-menu" aria-label="Main navigation">
                         <a href="index.html" class="nav-link">Home</a>
                         <a href="new-application-book.html" class="nav-link">New Application</a>
                         <a href="replacement-application.html" class="nav-link">Replacement</a>
                         <a href="update-details.html" class="nav-link">Update Details</a>
                         <div class="dropdown">
-                            <a href="#" class="nav-link">Information <i class="fas fa-chevron-down" style="font-size: 9px;"></i></a>
+                            <a href="#" class="nav-link" aria-haspopup="true">Information <i class="fas fa-chevron-down" style="font-size: 9px;"></i></a>
                             <div class="dropdown-content">
                                 <a href="nino-dependants.html">NINO Dependants</a>
                                 <a href="nino-for-students.html">NINO for Students</a>
@@ -286,19 +400,19 @@
                         <a href="contact.html" class="nav-link">Contact</a>
                         <a href="new-application-book.html" class="nav-link cta">Apply Now</a>
                     </nav>
-                    <button class="mobile-toggle" id="mobileToggleBtn" aria-label="Menu">
+                    <button class="mobile-toggle" id="mobileToggleBtn" aria-label="Toggle menu" aria-expanded="false">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
 
-                <div class="mobile-nav" id="mobileNavMenu">
+                <div class="mobile-nav" id="mobileNavMenu" role="navigation" aria-label="Mobile navigation">
                     <div class="mobile-nav-inner">
                         <a href="index.html" class="mobile-nav-link">Home <i class="fas fa-chevron-right"></i></a>
                         <a href="new-application-book.html" class="mobile-nav-link">New Application <i class="fas fa-chevron-right"></i></a>
                         <a href="replacement-application.html" class="mobile-nav-link">Replacement <i class="fas fa-chevron-right"></i></a>
                         <a href="update-details.html" class="mobile-nav-link">Update Details <i class="fas fa-chevron-right"></i></a>
                         <a href="contact.html" class="mobile-nav-link">Contact <i class="fas fa-chevron-right"></i></a>
-                        <div id="mobileServicesToggleBtn" class="mobile-dropdown-header">
+                        <div id="mobileServicesToggleBtn" class="mobile-dropdown-header" role="button" aria-expanded="false">
                             Information <i class="fas fa-chevron-down"></i>
                         </div>
                         <div id="mobileServicesSubmenuMenu" class="mobile-submenu">
@@ -319,16 +433,14 @@
 
         headerContainer.innerHTML = headerHTML;
     } else {
-        console.warn('Header container not found. Header will not be displayed. Add <div id="header-container"></div> to your page.');
+        console.warn('❌ Header container not found. Add <div id="header-container"></div> to your page.');
     }
 
     // ========== FOOTER INJECTION ==========
     const footerContainer = document.getElementById('footer-container');
     if (footerContainer) {
-        // Footer HTML with company info, quick links, services, contact, and full disclaimer
         const footerHTML = `
             <style>
-                /* ========== FOOTER STYLES ========== */
                 .site-footer {
                     background: #0f2b3f;
                     color: #cbd5e1;
@@ -369,7 +481,6 @@
                 .footer-brand .logo-text {
                     font-weight: 700;
                     font-size: 1.3rem;
-                    letter-spacing: -0.3px;
                     color: white;
                 }
                 .footer-brand .logo-text span {
@@ -420,7 +531,7 @@
                     left: 0;
                     width: 32px;
                     height: 2px;
-                    background: #1e3a5f;
+                    background: #f0b84b;
                     border-radius: 2px;
                 }
                 .footer-links {
@@ -457,21 +568,20 @@
                 }
                 .contact-info i {
                     width: 24px;
-                    color: #6c8fb0;
+                    color: #f0b84b;
                 }
-                /* Disclaimer Box inside Footer */
                 .disclaimer-footer {
                     background: rgba(0, 0, 0, 0.25);
                     border-radius: 16px;
                     padding: 20px 24px;
                     margin-bottom: 40px;
-                    border-left: 4px solid #e8b84b;
+                    border-left: 4px solid #f0b84b;
                     font-size: 0.75rem;
                     line-height: 1.5;
                     color: #cbd5e1;
                 }
                 .disclaimer-footer a {
-                    color: #e8b84b;
+                    color: #f0b84b;
                     text-decoration: underline;
                     font-weight: 500;
                 }
@@ -517,7 +627,6 @@
             <footer class="site-footer">
                 <div class="footer-container">
                     <div class="footer-grid">
-                        <!-- Brand Column -->
                         <div class="footer-brand">
                             <div class="logo">
                                 <div class="logo-icon">NI</div>
@@ -530,49 +639,39 @@
                                 <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                             </div>
                         </div>
-
-                        <!-- Quick Links Column -->
                         <div class="footer-column">
                             <h4>Quick Links</h4>
                             <ul class="footer-links">
                                 <li><a href="new-application-book.html"><i class="fas fa-chevron-right"></i> New Application</a></li>
-                                <li><a href="replacement-application.html"><i class="fas fa-chevron-right"></i> Replacement Application</a></li>
+                                <li><a href="replacement-application.html"><i class="fas fa-chevron-right"></i> Replacement</a></li>
                                 <li><a href="update-details.html"><i class="fas fa-chevron-right"></i> Update Details</a></li>
                                 <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
                                 <li><a href="faqs.html"><i class="fas fa-chevron-right"></i> FAQs</a></li>
                             </ul>
                         </div>
-
-                        <!-- Our Services Column -->
                         <div class="footer-column">
                             <h4>Our Services</h4>
                             <ul class="footer-links">
                                 <li><a href="nino-information.html"><i class="fas fa-chevron-right"></i> NINO Information</a></li>
-                                <li><a href="nino-for-students.html"><i class="fas fa-chevron-right"></i> NINO for Students</a></li>
-                                <li><a href="nino-dependants.html"><i class="fas fa-chevron-right"></i> NINO Dependants</a></li>
-                                <li><a href="nino-skilled-workers.html"><i class="fas fa-chevron-right"></i> NINO Skilled Workers</a></li>
+                                <li><a href="nino-for-students.html"><i class="fas fa-chevron-right"></i> Students</a></li>
+                                <li><a href="nino-dependants.html"><i class="fas fa-chevron-right"></i> Dependants</a></li>
+                                <li><a href="nino-skilled-workers.html"><i class="fas fa-chevron-right"></i> Skilled Workers</a></li>
                                 <li><a href="lost-nino-help.html"><i class="fas fa-chevron-right"></i> Lost NINO Help</a></li>
                             </ul>
                         </div>
-
-                        <!-- Contact Info Column -->
                         <div class="footer-column">
                             <h4>Get in Touch</h4>
                             <div class="contact-info">
                                 <p><i class="fas fa-envelope"></i> support@nino.co.uk</p>
                                 <p><i class="fas fa-phone-alt"></i> 020 7946 0123</p>
-                                <p><i class="fas fa-map-marker-alt"></i> London, United Kingdom</p>
+                                <p><i class="fas fa-map-marker-alt"></i> London, UK</p>
                                 <p><i class="fas fa-clock"></i> Mon - Fri: 9am - 6pm</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- FULL DISCLAIMER BOX IN FOOTER -->
                     <div class="disclaimer-footer">
-                        <strong><i class="fas fa-exclamation-triangle"></i> Disclaimer:</strong> You can apply directly at the DWP or contact Job Centre Plus. We have no affiliations with the Department for Work and Pension, Job Centre Plus or any UK government body. You may choose to apply directly by phoning the Jobcentre plus where there will be no fee payable. We cannot grant you your National Insurance Number ourselves, the decision rests solely with the HMRC. We can submit your National Insurance Number application on your behalf for a service fee. To apply for free you will need to visit <a href="https://www.gov.uk/apply-national-insurance-number" target="_blank" rel="noopener noreferrer">https://www.gov.uk/apply-national-insurance-number</a>.
+                        <strong><i class="fas fa-exclamation-triangle"></i> Disclaimer:</strong> You can apply directly at the DWP or contact Job Centre Plus. We have no affiliations with any UK government body. You may apply directly by phoning Jobcentre plus where there will be no fee. We cannot grant your National Insurance Number; the decision rests solely with HMRC. We submit applications on your behalf for a service fee. For free applications visit <a href="https://www.gov.uk/apply-national-insurance-number" target="_blank" rel="noopener noreferrer">gov.uk/apply-national-insurance-number</a>.
                     </div>
-
-                    <!-- Footer Bottom -->
                     <div class="footer-bottom">
                         <div>&copy; 2026 NI NO. All rights reserved.</div>
                         <div class="footer-bottom-links">
@@ -585,79 +684,96 @@
                 </div>
             </footer>
         `;
-
         footerContainer.innerHTML = footerHTML;
     } else {
-        console.warn('Footer container not found. Footer will not be displayed. Add <div id="footer-container"></div> to your page.');
+        console.warn('❌ Footer container not found. Add <div id="footer-container"></div> to your page.');
     }
 
     // ========== LOAD EXTERNAL RESOURCES ==========
-    // Load Font Awesome if not already loaded
-    if (!document.querySelector('link[href*="font-awesome"]') && !document.querySelector('script[src*="font-awesome"]')) {
-        const fontAwesomeLink = document.createElement('link');
-        fontAwesomeLink.rel = 'stylesheet';
-        fontAwesomeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
-        document.head.appendChild(fontAwesomeLink);
+    if (!document.querySelector('link[href*="font-awesome"]')) {
+        const faLink = document.createElement('link');
+        faLink.rel = 'stylesheet';
+        faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+        document.head.appendChild(faLink);
     }
-
-    // Load Google Fonts if not already loaded
     if (!document.querySelector('link[href*="fonts.googleapis.com/css2?family=Inter"]')) {
-        const googleFontsLink = document.createElement('link');
-        googleFontsLink.href = 'https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap';
-        googleFontsLink.rel = 'stylesheet';
-        document.head.appendChild(googleFontsLink);
+        const gfLink = document.createElement('link');
+        gfLink.href = 'https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap';
+        gfLink.rel = 'stylesheet';
+        document.head.appendChild(gfLink);
     }
 
-    // ========== INITIALIZE MOBILE MENU & STICKY HEADER FUNCTIONALITY ==========
-    function initHeaderFunctionality() {
-        // Header mobile menu toggle
+    // ========== INITIALIZE ALL FUNCTIONALITY ==========
+    function initAll() {
         const toggleBtn = document.getElementById('mobileToggleBtn');
         const mobileNav = document.getElementById('mobileNavMenu');
         const stickyHeader = document.getElementById('stickyHeader');
         let isMenuOpen = false;
 
-        // Sticky header shadow enhancement
+        // ===== STICKY HEADER SHADOW =====
         if (stickyHeader) {
-            const observer = new IntersectionObserver(
-                ([e]) => {
-                    // When header is not at the very top (stuck), add shadow class
-                    if (e.intersectionRatio < 1) {
+            // Use Intersection Observer for better performance
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(
+                    ([entry]) => {
+                        if (entry.intersectionRatio < 1) {
+                            stickyHeader.classList.add('is-sticky');
+                        } else {
+                            stickyHeader.classList.remove('is-sticky');
+                        }
+                    },
+                    { threshold: [1], rootMargin: '0px 0px 0px 0px' }
+                );
+                
+                // Create sentinel element before header
+                const sentinel = document.createElement('div');
+                sentinel.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:1px;pointer-events:none;';
+                stickyHeader.parentNode.insertBefore(sentinel, stickyHeader);
+                observer.observe(sentinel);
+            } else {
+                // Fallback for older browsers
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 0) {
                         stickyHeader.classList.add('is-sticky');
                     } else {
                         stickyHeader.classList.remove('is-sticky');
                     }
-                },
-                { threshold: [1] }
-            );
-            
-            // Create a sentinel element to observe
-            const sentinel = document.createElement('div');
-            sentinel.style.position = 'absolute';
-            sentinel.style.top = '0';
-            sentinel.style.left = '0';
-            sentinel.style.width = '100%';
-            sentinel.style.height = '1px';
-            sentinel.style.pointerEvents = 'none';
-            stickyHeader.parentNode.insertBefore(sentinel, stickyHeader);
-            observer.observe(sentinel);
+                }, { passive: true });
+            }
         }
 
+        // ===== MOBILE MENU TOGGLE =====
         if (toggleBtn && mobileNav) {
-            function toggleMenu() {
-                isMenuOpen = !isMenuOpen;
-                mobileNav.classList.toggle('open', isMenuOpen);
+            function openMenu() {
+                isMenuOpen = true;
+                mobileNav.classList.add('open');
                 const icon = toggleBtn.querySelector('i');
                 if (icon) {
-                    if (isMenuOpen) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times');
-                    } else {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
                 }
-                // Prevent body scroll when mobile menu is open
-                document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+                toggleBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeMenu() {
+                isMenuOpen = false;
+                mobileNav.classList.remove('open');
+                const icon = toggleBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+                toggleBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+            
+            function toggleMenu() {
+                if (isMenuOpen) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
             }
 
             toggleBtn.addEventListener('click', function(e) {
@@ -665,33 +781,29 @@
                 toggleMenu();
             });
 
-            // Close menu when a link is clicked
-            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (isMenuOpen) {
-                        toggleMenu();
-                    }
+            // Close on link click
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMenu();
                 });
             });
 
-            // Close mobile menu when clicking outside
+            // Close on outside click
             document.addEventListener('click', function(event) {
-                const isClickInside = toggleBtn.contains(event.target) || (mobileNav && mobileNav.contains(event.target));
-                if (!isClickInside && isMenuOpen) {
-                    toggleMenu();
+                if (isMenuOpen && !toggleBtn.contains(event.target) && !mobileNav.contains(event.target)) {
+                    closeMenu();
                 }
             });
 
-            // Close mobile menu on escape key
+            // Close on Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && isMenuOpen) {
-                    toggleMenu();
+                    closeMenu();
                 }
             });
         }
 
-        // Mobile services dropdown toggle
+        // ===== MOBILE SERVICES DROPDOWN =====
         const servicesToggleBtn = document.getElementById('mobileServicesToggleBtn');
         const servicesSubmenuMenu = document.getElementById('mobileServicesSubmenuMenu');
         if (servicesToggleBtn && servicesSubmenuMenu) {
@@ -701,43 +813,29 @@
                 servicesSubmenuMenu.style.display = isOpen ? 'none' : 'block';
                 const icon = this.querySelector('i');
                 if (icon) {
-                    if (isOpen) {
-                        icon.classList.remove('fa-chevron-up');
-                        icon.classList.add('fa-chevron-down');
-                    } else {
-                        icon.classList.remove('fa-chevron-down');
-                        icon.classList.add('fa-chevron-up');
-                    }
+                    icon.classList.toggle('fa-chevron-down', isOpen);
+                    icon.classList.toggle('fa-chevron-up', !isOpen);
                 }
-            });
-
-            // Close submenu when clicking a link inside it
-            const submenuLinks = servicesSubmenuMenu.querySelectorAll('a');
-            submenuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (isMenuOpen) {
-                        const toggleBtn = document.getElementById('mobileToggleBtn');
-                        if (toggleBtn) toggleBtn.click();
-                    }
-                });
+                this.setAttribute('aria-expanded', !isOpen);
             });
         }
 
-        // Disclaimer "Click here to find out more" functionality
+        // ===== DISCLAIMER MORE INFO =====
         const disclaimerMore = document.querySelector('.disclaimer-more');
         if (disclaimerMore) {
             disclaimerMore.addEventListener('click', function(e) {
                 e.preventDefault();
-                alert('You can apply for a National Insurance number for free directly through the official GOV.UK website: https://www.gov.uk/apply-national-insurance-number\n\nWe are a private service that assists with the application process.');
+                alert('✅ You can apply for a National Insurance number for FREE directly through the official GOV.UK website.\n\n📌 Visit: https://www.gov.uk/apply-national-insurance-number\n\n⚠️ We are a private service that assists with the application process for a fee.');
             });
         }
+
+        console.log('✅ NI NO Header & Footer initialized successfully - Sticky header active on all devices');
     }
 
-    // Initialize functionality after DOM is ready
+    // Run initialization
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initHeaderFunctionality);
+        document.addEventListener('DOMContentLoaded', initAll);
     } else {
-        // DOM already loaded, run immediately but with small delay to ensure elements are in DOM
-        setTimeout(initHeaderFunctionality, 100);
+        setTimeout(initAll, 50);
     }
 })();
