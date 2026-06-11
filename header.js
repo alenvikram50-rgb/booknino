@@ -8,7 +8,7 @@
         // Header HTML with top disclaimer bar, logo, navigation, and mobile menu
         const headerHTML = `
             <style>
-                /* ========== TOP DISCLAIMER BAR (HEADER) ========== */
+                /* ========== TOP DISCLAIMER BAR ========== */
                 .top-disclaimer {
                     background: #fef9e6;
                     border-bottom: 1px solid #f0d080;
@@ -27,7 +27,7 @@
                     color: #1e3a5f;
                 }
 
-                /* ========== PROFESSIONAL HEADER ========== */
+                /* ========== PROFESSIONAL STICKY HEADER ========== */
                 .site-header {
                     background: #ffffff;
                     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
@@ -36,6 +36,13 @@
                     z-index: 1000;
                     border-bottom: 1px solid #eef2f8;
                     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                    /* Ensure sticky works properly */
+                    will-change: transform;
+                    transition: box-shadow 0.3s ease;
+                }
+                /* Add shadow when header is stuck (optional enhancement) */
+                .site-header.is-sticky {
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
                 }
                 .header-container {
                     max-width: 1400px;
@@ -160,6 +167,8 @@
                     font-size: 1.3rem;
                     cursor: pointer;
                     color: #1e3a5f;
+                    align-items: center;
+                    justify-content: center;
                 }
                 .mobile-nav {
                     display: none;
@@ -168,6 +177,9 @@
                     max-height: 70vh;
                     overflow-y: auto;
                     border-top: 1px solid #eef2f8;
+                    /* Ensure mobile nav appears below sticky header */
+                    position: relative;
+                    z-index: 999;
                 }
                 .mobile-nav.open {
                     display: block;
@@ -246,12 +258,12 @@
                 <i class="fas fa-info-circle"></i> Nationalinsurancenumber.co is operated by a private company. You are able to apply directly with the JobCentre plus and HMRC where there will be no cost involved. We have no affiliations with any UK government body. For the official site please visit <a href="https://www.gov.uk" target="_blank" rel="noopener noreferrer">https://www.gov.uk</a>. <a href="#" class="disclaimer-more">Click here to find out more.</a>
             </div>
 
-            <!-- Main Header -->
-            <header class="site-header">
+            <!-- Main Sticky Header -->
+            <header class="site-header" id="stickyHeader">
                 <div class="header-container">
                     <a href="index.html" class="logo">
                         <div class="logo-icon">NI</div>
-                        <div class="logo-text">NI NO</div>
+                        <div class="logo-text">NI NO <span>UK</span></div>
                     </a>
                     <nav class="nav-menu">
                         <a href="index.html" class="nav-link">Home</a>
@@ -277,9 +289,7 @@
                     <button class="mobile-toggle" id="mobileToggleBtn" aria-label="Menu">
                         <i class="fas fa-bars"></i>
                     </button>
-                </div>                   
-                 <a href="index.html" class="logo">
-                    </a>
+                </div>
 
                 <div class="mobile-nav" id="mobileNavMenu">
                     <div class="mobile-nav-inner">
@@ -514,17 +524,22 @@
                                 <div class="logo-text">NI NO <span>UK</span></div>
                             </div>
                             <p class="footer-description">Professional assistance for UK National Insurance number applications, replacements, and updates. Fast, reliable, and secure.</p>
+                            <div class="social-links">
+                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            </div>
                         </div>
 
                         <!-- Quick Links Column -->
                         <div class="footer-column">
                             <h4>Quick Links</h4>
                             <ul class="footer-links">
-                                <li><a href="/new-application.html"><i class="fas fa-chevron-right"></i> New Application</a></li>
-                                <li><a href="/replacement-application.html"><i class="fas fa-chevron-right"></i> Replacement Application</a></li>
-                                <li><a href="/update-details.html"><i class="fas fa-chevron-right"></i> Update Details</a></li>
-                                <li><a href="/contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
-                                <li><a href="/faqs.html"><i class="fas fa-chevron-right"></i> FAQs</a></li>
+                                <li><a href="new-application-book.html"><i class="fas fa-chevron-right"></i> New Application</a></li>
+                                <li><a href="replacement-application.html"><i class="fas fa-chevron-right"></i> Replacement Application</a></li>
+                                <li><a href="update-details.html"><i class="fas fa-chevron-right"></i> Update Details</a></li>
+                                <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                                <li><a href="faqs.html"><i class="fas fa-chevron-right"></i> FAQs</a></li>
                             </ul>
                         </div>
 
@@ -532,11 +547,11 @@
                         <div class="footer-column">
                             <h4>Our Services</h4>
                             <ul class="footer-links">
-                                <li><a href="/nino-information"><i class="fas fa-chevron-right"></i> NINO Information</a></li>
-                                <li><a href="/nino-students"><i class="fas fa-chevron-right"></i> NINO for Students</a></li>
-                                <li><a href="/nino-dependants"><i class="fas fa-chevron-right"></i> NINO Dependants</a></li>
-                                <li><a href="/nino-skilled-workers"><i class="fas fa-chevron-right"></i> NINO Skilled Workers</a></li>
-                                <li><a href="/lost-nino-help"><i class="fas fa-chevron-right"></i> Lost NINO Help</a></li>
+                                <li><a href="nino-information.html"><i class="fas fa-chevron-right"></i> NINO Information</a></li>
+                                <li><a href="nino-for-students.html"><i class="fas fa-chevron-right"></i> NINO for Students</a></li>
+                                <li><a href="nino-dependants.html"><i class="fas fa-chevron-right"></i> NINO Dependants</a></li>
+                                <li><a href="nino-skilled-workers.html"><i class="fas fa-chevron-right"></i> NINO Skilled Workers</a></li>
+                                <li><a href="lost-nino-help.html"><i class="fas fa-chevron-right"></i> Lost NINO Help</a></li>
                             </ul>
                         </div>
 
@@ -561,10 +576,10 @@
                     <div class="footer-bottom">
                         <div>&copy; 2026 NI NO. All rights reserved.</div>
                         <div class="footer-bottom-links">
-                            <a href="/privacy-policy">Privacy Policy</a>
-                            <a href="/terms-conditions">Terms & Conditions</a>
-                            <a href="/cookie-policy">Cookie Policy</a>
-                            <a href="/accessibility">Accessibility</a>
+                            <a href="privacy-policy.html">Privacy Policy</a>
+                            <a href="terms-conditions.html">Terms & Conditions</a>
+                            <a href="cookie-policy.html">Cookie Policy</a>
+                            <a href="accessibility.html">Accessibility</a>
                         </div>
                     </div>
                 </div>
@@ -593,41 +608,84 @@
         document.head.appendChild(googleFontsLink);
     }
 
-    // ========== INITIALIZE MOBILE MENU FUNCTIONALITY ==========
-    setTimeout(function() {
+    // ========== INITIALIZE MOBILE MENU & STICKY HEADER FUNCTIONALITY ==========
+    function initHeaderFunctionality() {
         // Header mobile menu toggle
         const toggleBtn = document.getElementById('mobileToggleBtn');
         const mobileNav = document.getElementById('mobileNavMenu');
+        const stickyHeader = document.getElementById('stickyHeader');
         let isMenuOpen = false;
+
+        // Sticky header shadow enhancement
+        if (stickyHeader) {
+            const observer = new IntersectionObserver(
+                ([e]) => {
+                    // When header is not at the very top (stuck), add shadow class
+                    if (e.intersectionRatio < 1) {
+                        stickyHeader.classList.add('is-sticky');
+                    } else {
+                        stickyHeader.classList.remove('is-sticky');
+                    }
+                },
+                { threshold: [1] }
+            );
+            
+            // Create a sentinel element to observe
+            const sentinel = document.createElement('div');
+            sentinel.style.position = 'absolute';
+            sentinel.style.top = '0';
+            sentinel.style.left = '0';
+            sentinel.style.width = '100%';
+            sentinel.style.height = '1px';
+            sentinel.style.pointerEvents = 'none';
+            stickyHeader.parentNode.insertBefore(sentinel, stickyHeader);
+            observer.observe(sentinel);
+        }
 
         if (toggleBtn && mobileNav) {
             function toggleMenu() {
                 isMenuOpen = !isMenuOpen;
                 mobileNav.classList.toggle('open', isMenuOpen);
                 const icon = toggleBtn.querySelector('i');
-                if (isMenuOpen) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
+                if (icon) {
+                    if (isMenuOpen) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
                 }
+                // Prevent body scroll when mobile menu is open
+                document.body.style.overflow = isMenuOpen ? 'hidden' : '';
             }
 
-            toggleBtn.addEventListener('click', toggleMenu);
+            toggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
 
             // Close menu when a link is clicked
             const mobileLinks = document.querySelectorAll('.mobile-nav-link');
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    if (isMenuOpen) toggleMenu();
+                    if (isMenuOpen) {
+                        toggleMenu();
+                    }
                 });
             });
 
             // Close mobile menu when clicking outside
             document.addEventListener('click', function(event) {
-                const isClickInside = toggleBtn.contains(event.target) || mobileNav.contains(event.target);
+                const isClickInside = toggleBtn.contains(event.target) || (mobileNav && mobileNav.contains(event.target));
                 if (!isClickInside && isMenuOpen) {
+                    toggleMenu();
+                }
+            });
+
+            // Close mobile menu on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isMenuOpen) {
                     toggleMenu();
                 }
             });
@@ -642,23 +700,44 @@
                 const isOpen = servicesSubmenuMenu.style.display === 'block';
                 servicesSubmenuMenu.style.display = isOpen ? 'none' : 'block';
                 const icon = this.querySelector('i');
-                if (isOpen) {
-                    icon.classList.remove('fa-chevron-up');
-                    icon.classList.add('fa-chevron-down');
-                } else {
-                    icon.classList.remove('fa-chevron-down');
-                    icon.classList.add('fa-chevron-up');
+                if (icon) {
+                    if (isOpen) {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    } else {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    }
                 }
+            });
+
+            // Close submenu when clicking a link inside it
+            const submenuLinks = servicesSubmenuMenu.querySelectorAll('a');
+            submenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (isMenuOpen) {
+                        const toggleBtn = document.getElementById('mobileToggleBtn');
+                        if (toggleBtn) toggleBtn.click();
+                    }
+                });
             });
         }
 
-        // Disclaimer "Click here to find out more" alert (optional)
+        // Disclaimer "Click here to find out more" functionality
         const disclaimerMore = document.querySelector('.disclaimer-more');
         if (disclaimerMore) {
             disclaimerMore.addEventListener('click', function(e) {
                 e.preventDefault();
-                alert('You can apply for a National Insurance number for free directly through the official GOV.UK website: https://www.gov.uk/apply-national-insurance-number');
+                alert('You can apply for a National Insurance number for free directly through the official GOV.UK website: https://www.gov.uk/apply-national-insurance-number\n\nWe are a private service that assists with the application process.');
             });
         }
-    }, 100);
+    }
+
+    // Initialize functionality after DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initHeaderFunctionality);
+    } else {
+        // DOM already loaded, run immediately but with small delay to ensure elements are in DOM
+        setTimeout(initHeaderFunctionality, 100);
+    }
 })();
