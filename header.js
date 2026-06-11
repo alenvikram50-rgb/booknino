@@ -630,7 +630,7 @@
                         <div class="footer-brand">
                             <div class="logo">
                                 <div class="logo-icon">NI</div>
-                                <div class="logo-text">NI NO <span>UK</span></div>
+                                <div class="logo-text">NI NO</div>
                             </div>
                             <p class="footer-description">Professional assistance for UK National Insurance number applications, replacements, and updates. Fast, reliable, and secure.</p>
                             <div class="social-links">
