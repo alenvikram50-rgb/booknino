@@ -238,8 +238,7 @@
                     <div class="footer-column">
                         <h4>Get in Touch</h4>
                         <div class="contact-info">
-                            <p><i class="fas fa-envelope"></i> support@nino.co.uk</p>
-                            <p><i class="fas fa-phone-alt"></i> 020 7946 0123</p>
+                            <p><i class="fas fa-envelope"></i> support@booknino.co.uk</p>
                             <p><i class="fas fa-map-marker-alt"></i> London, United Kingdom</p>
                             <p><i class="fas fa-clock"></i> Mon - Fri: 9am - 6pm</p>
                         </div>
@@ -258,7 +257,7 @@
                         <a href="privacy-policy.html">Privacy Policy</a>
                         <a href="terms.html">Terms & Conditions</a>
                         <a href="cookie-policy.html">Cookie Policy</a>
-                        <a href="/accessibility">Refund Policy</a>
+                        <a href="refund-policy.html">Refund Policy</a>
                     </div>
                 </div>
             </div>
