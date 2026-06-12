@@ -1,1 +1,478 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>NI NO Pro | UK National Insurance Number Application</title>
+<meta name="description" content="Professional NI Number application form with real-time validation">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: linear-gradient(135deg, #f0f4fa 0%, #e6edf4 100%); color: #0f172a; line-height: 1.5; }
+  .wrapper { max-width: 1000px; margin: 0 auto; padding: 40px 24px 60px; }
+  .header { text-align: center; margin-bottom: 40px; }
+  .badge { background: rgba(30,58,95,0.12); display: inline-block; padding: 6px 18px; border-radius: 60px; font-weight: 600; font-size: 0.85rem; color: #1e3a5f; margin-bottom: 18px; }
+  h1 { font-size: 2.4rem; font-weight: 800; background: linear-gradient(135deg, #0b2b44, #1e4a76); background-clip: text; -webkit-background-clip: text; color: transparent; margin-bottom: 12px; }
+  .subhead { color: #475569; max-width: 700px; margin: 0 auto; }
+  .lang-selector { text-align: right; margin-bottom: 20px; }
+  .lang-selector select { padding: 10px 16px; border-radius: 40px; border: 1px solid #e2e8f0; background: white; font-family: 'Inter', sans-serif; font-size: 13px; cursor: pointer; width: 220px; }
+  .step-indicator { display: flex; justify-content: space-between; margin-bottom: 40px; position: relative; }
+  .step-indicator::before { content: ''; position: absolute; top: 24px; left: 10%; right: 10%; height: 2px; background: #e2e8f0; z-index: 0; }
+  .step { text-align: center; z-index: 1; background: transparent; padding: 0 8px; }
+  .step-circle { width: 48px; height: 48px; background: #f1f5f9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; color: #64748b; margin: 0 auto 8px; }
+  .step.active .step-circle { background: #1e3a5f; color: white; box-shadow: 0 0 0 3px rgba(30,58,95,0.2); }
+  .step.completed .step-circle { background: #1e3a5f; color: white; }
+  .step-label { font-size: 11px; font-weight: 600; color: #64748b; }
+  .step.active .step-label { color: #1e3a5f; }
+  .progress-bar { background: #e2e8f0; border-radius: 10px; height: 6px; margin-bottom: 30px; overflow: hidden; }
+  .progress-fill { background: linear-gradient(90deg, #1e3a5f, #2c6290); width: 33%; height: 100%; transition: width 0.3s; }
+  .form-card { background: white; border-radius: 32px; padding: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); border: 1px solid #eef2f8; }
+  .form-section { margin-bottom: 32px; border-bottom: 1px solid #eef2f8; padding-bottom: 24px; }
+  .form-section:last-child { border-bottom: none; padding-bottom: 0; }
+  .section-title { font-size: 1rem; font-weight: 700; color: #1e3a5f; margin-bottom: 20px; background: #eef2ff; display: inline-block; padding: 4px 16px; border-radius: 30px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { font-size: 13px; font-weight: 600; color: #0f172a; margin-bottom: 6px; display: block; }
+  .required { color: #dc2626; }
+  input, select, textarea { width: 100%; padding: 12px 14px; background: #f8fafc; border: 1.5px solid #e2edf7; border-radius: 14px; font-family: 'Inter', sans-serif; font-size: 14px; transition: all 0.2s; }
+  input:focus, select:focus { outline: none; border-color: #1e3a5f; box-shadow: 0 0 0 3px rgba(30,58,95,0.1); }
+  .error-input { border-color: #dc2626 !important; background-color: #fef2f2 !important; box-shadow: 0 0 0 1px #dc2626 !important; }
+  .error-message { color: #dc2626; font-size: 11px; margin-top: 4px; display: block; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .form-row-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+  .radio-group { display: flex; gap: 25px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+  .radio-group label { display: flex; align-items: center; gap: 8px; font-weight: 400; cursor: pointer; }
+  .radio-group.error-radio .radio-card { border-color: #dc2626; background-color: #fef2f2; }
+  .radio-card { display: flex; align-items: center; gap: 8px; background: #f9fbfe; padding: 8px 18px; border-radius: 100px; border: 1.5px solid #e2edf7; cursor: pointer; transition: all 0.2s; }
+  .conditional-field { margin-top: 12px; display: none; }
+  .alert-warning { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 16px 20px; border-radius: 16px; margin: 20px 0; display: none; }
+  .btn-group { display: flex; justify-content: space-between; gap: 16px; margin-top: 32px; }
+  .btn-pro { padding: 12px 28px; border-radius: 50px; font-weight: 600; font-size: 14px; cursor: pointer; border: none; font-family: 'Inter', sans-serif; transition: all 0.2s; }
+  .btn-primary { background: #1e3a5f; color: white; }
+  .btn-primary:hover { background: #0f2b48; transform: translateY(-2px); }
+  .btn-secondary { background: #f1f5f9; color: #475569; }
+  .btn-payment { background: #059669; color: white; box-shadow: 0 2px 8px rgba(5,150,105,0.3); }
+  .btn-payment:hover { background: #047857; transform: translateY(-2px); }
+  .review-section { background: #f8fafc; border-radius: 20px; padding: 20px; margin-bottom: 20px; }
+  .review-row { display: flex; padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
+  .review-label { width: 35%; font-weight: 600; }
+  .success-message { background: #e0f2e9; padding: 40px; border-radius: 24px; text-align: center; color: #1a6e4a; display: none; }
+  .form-page { display: none; animation: fadeIn 0.3s ease; }
+  .form-page.active-page { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .payment-section { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-radius: 24px; padding: 24px; margin: 20px 0; text-align: center; border: 1px solid #bbf7d0; }
+  .payment-amount { font-size: 28px; font-weight: 800; color: #059669; margin: 10px 0; }
+  .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 1000; }
+  .loading-spinner { background: white; padding: 30px 40px; border-radius: 24px; text-align: center; }
+  .loading-spinner i { font-size: 48px; color: #1e3a5f; }
+  @media (max-width: 680px) { .form-card { padding: 24px; } .form-row, .form-row-3 { grid-template-columns: 1fr; gap: 12px; } .step-label { font-size: 9px; } .step-circle { width: 38px; height: 38px; font-size: 1rem; } }
+</style>
+</head>
+<body>
 
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-spinner">
+    <i class="fas fa-spinner fa-spin"></i>
+    <p style="margin-top: 16px;">Submitting your application...</p>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="header">
+    <div class="badge"><i class="fas fa-file-alt"></i> NI NO · Premium Application Service</div>
+    <h1>UK National Insurance Number Application</h1>
+    <div class="subhead">Real-time validation — red borders disappear instantly when you fill the field.</div>
+  </div>
+
+  <div class="step-indicator">
+    <div class="step active" data-step="1"><div class="step-circle">1</div><div class="step-label">Personal Details</div></div>
+    <div class="step" data-step="2"><div class="step-circle">2</div><div class="step-label">Nationality & Eligibility</div></div>
+    <div class="step" data-step="3"><div class="step-circle">3</div><div class="step-label">Review & Payment</div></div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+  <div class="form-card" id="formContainer">
+    <!-- PAGE 1 -->
+    <div id="page1" class="form-page active-page">
+      <div id="niRecoveryAlert" class="alert-warning"><i class="fas fa-exclamation-triangle"></i> <strong>You may already have a National Insurance Number!</strong><br>You can <a href="#">recover your existing National Insurance Number here</a>.</div>
+      <div class="form-section"><div class="section-title">Eligibility Check</div>
+        <div class="form-group" id="grp-issuedNi"><label>Have you been issued a National Insurance Number in the past? <span class="required">*</span></label>
+          <div class="radio-group"><label class="radio-card"><input type="radio" name="issuedNi" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="issuedNi" value="No" checked> No</label></div>
+        </div>
+        <div class="form-group" id="grp-ukBorn"><label>Are you a UK citizen, who was born in the United Kingdom? <span class="required">*</span></label>
+          <div class="radio-group"><label class="radio-card"><input type="radio" name="ukBorn" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="ukBorn" value="No" checked> No</label></div>
+        </div>
+      </div>
+      <div class="form-section"><div class="section-title">Personal Information</div>
+        <div class="form-group" id="grp-gender"><label>Gender <span class="required">*</span></label>
+          <div class="radio-group"><label class="radio-card"><input type="radio" name="gender" value="Male"> Male</label><label class="radio-card"><input type="radio" name="gender" value="Female"> Female</label></div>
+        </div>
+        <div class="form-row"><div class="form-group" id="grp-title"><label>Title <span class="required">*</span></label><select id="title"><option value="">Select</option><option>Mr</option><option>Mrs</option><option>Miss</option><option>Ms</option><option>Dr</option></select></div><div class="form-group" id="grp-firstName"><label>First Name <span class="required">*</span></label><input type="text" id="firstName"></div></div>
+        <div class="form-group"><label>Do you have a previous first name?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="prevFirstName" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="prevFirstName" value="No" checked> No</label></div><div id="prevFirstNameField" class="conditional-field"><input type="text" id="prevFirstNameVal" placeholder="Previous first name"></div></div>
+        <div class="form-group"><label>Middle Name</label><input type="text" id="middleName"></div>
+        <div class="form-group"><label>Do you have a previous middle name?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="prevMiddleName" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="prevMiddleName" value="No" checked> No</label></div><div id="prevMiddleField" class="conditional-field"><input type="text" id="prevMiddleVal" placeholder="Previous middle name"></div></div>
+        <div class="form-row"><div class="form-group" id="grp-lastName"><label>Last Name <span class="required">*</span></label><input type="text" id="lastName"></div><div class="form-group"><label>Do you have a previous last name?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="prevLastName" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="prevLastName" value="No" checked> No</label></div><div id="prevLastNameField" class="conditional-field"><input type="text" id="prevLastNameVal" placeholder="Previous last name"></div></div></div>
+        <div class="form-row-3"><div class="form-group" id="grp-dobDay"><label>Day <span class="required">*</span></label><select id="dobDay"><option value="">DD</option><script>for(let i=1;i<=31;i++)document.write(`<option value="${i}">${i}</option>`);</script></select></div><div class="form-group" id="grp-dobMonth"><label>Month <span class="required">*</span></label><select id="dobMonth"><option value="">MM</option><script>for(let i=1;i<=12;i++)document.write(`<option value="${i}">${i}</option>`);</script></select></div><div class="form-group" id="grp-dobYear"><label>Year <span class="required">*</span></label><select id="dobYear"><option value="">YYYY</option><script>for(let i=2025;i>=1920;i--)document.write(`<option value="${i}">${i}</option>`);</script></select></div></div>
+        <div class="form-group" id="grp-marital"><label>Marital status <span class="required">*</span></label>
+          <div class="radio-group"><label class="radio-card"><input type="radio" name="marital" value="Single"> Single</label><label class="radio-card"><input type="radio" name="marital" value="Married"> Married</label><label class="radio-card"><input type="radio" name="marital" value="Civil Partnership"> Civil Partnership</label><label class="radio-card"><input type="radio" name="marital" value="Divorced"> Divorced</label><label class="radio-card"><input type="radio" name="marital" value="Widow"> Widow</label></div>
+        </div>
+      </div>
+      <div class="form-section"><div class="section-title">Contact & Address</div>
+        <div class="form-row"><div class="form-group" id="grp-email"><label>Email <span class="required">*</span></label><input type="email" id="email"></div><div class="form-group" id="grp-confirmEmail"><label>Confirm Email <span class="required">*</span></label><input type="email" id="confirmEmail"></div></div>
+        <div class="form-group" id="grp-phone"><label>UK Phone <span class="required">*</span></label><input type="tel" id="phone" placeholder="07700 900123"></div>
+        <div class="form-row"><div class="form-group" id="grp-houseNumber"><label>House/Flat number <span class="required">*</span></label><input type="text" id="houseNumber"></div><div class="form-group" id="grp-streetName"><label>Street <span class="required">*</span></label><input type="text" id="streetName"></div></div>
+        <div class="form-row"><div class="form-group" id="grp-city"><label>City/Town <span class="required">*</span></label><input type="text" id="city"></div><div class="form-group" id="grp-postcode"><label>Postcode <span class="required">*</span></label><input type="text" id="postcode"></div></div>
+        <div class="form-group" id="grp-lastEntry"><label>Last date of entry into UK <span class="required">*</span></label><input type="date" id="lastEntry"></div>
+      </div>
+      <div class="btn-group"><button class="btn-pro btn-primary" id="toPage2Btn">Continue →</button></div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div id="page2" class="form-page">
+      <div class="form-section"><div class="section-title">Nationality Details</div>
+        <div class="form-group" id="grp-nationality"><label>Nationality <span class="required">*</span></label>
+          <select id="nationality"><option value="">Select Nationality</option><option>United Kingdom</option><option>Other (specify)</option><option>India</option><option>Pakistan</option><option>Bangladesh</option><option>USA</option><option>Canada</option><option>Australia</option><option>Nigeria</option><option>France</option><option>Germany</option></select>
+          <input type="text" id="otherNationality" placeholder="Please specify nationality" style="margin-top:8px; display:none;">
+        </div>
+        <div class="form-group"><label>Do you have Dual Nationality?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="dualNationality" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="dualNationality" value="No" checked> No</label></div><div id="dualField" class="conditional-field"><label>Dual Nationality Country</label><select id="dualCountryList"><option value="">Select country</option><option>India</option><option>USA</option><option>Canada</option><option>Australia</option></select></div></div>
+        <div class="form-group" id="grp-hasPassport"><label>Do you have a passport? <span class="required">*</span></label><div class="radio-group"><label class="radio-card"><input type="radio" name="hasPassport" value="Yes" id="passportYes"> Yes</label><label class="radio-card"><input type="radio" name="hasPassport" value="No" id="passportNo" checked> No</label></div></div>
+        <div id="nationalIdCardGroup" style="display: none;"><div class="form-group"><label>Do you have a national identity card?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="hasIdCard" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="hasIdCard" value="No" checked> No</label></div></div></div>
+        <div class="form-group"><label>Do you have a Biometric Residence Permit / Residence Permit?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="hasBrp" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="hasBrp" value="No" checked> No</label></div></div>
+      </div>
+      <div class="form-section"><div class="section-title">Application Details</div>
+        <div class="form-group" id="grp-reason"><label>Reason for applying? <span class="required">*</span></label><select id="reason"><option value="">Please select..</option><option value="work">Looking for work / Employment</option><option value="working">Already working (employer requested)</option><option value="student">Student needing NI for part-time work</option><option value="benefits">Benefits / Universal Credit application</option></select></div>
+        <div class="form-group" id="grp-working"><label>Are you currently working? <span class="required">*</span></label><div class="radio-group"><label class="radio-card"><input type="radio" name="working" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="working" value="No"> No</label></div></div>
+      </div>
+      <div class="form-section"><div class="section-title">Additional Support</div>
+        <div class="form-group"><label>Do you require a translator?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="translator" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="translator" value="No" checked> No</label></div><div id="translatorLangField" class="conditional-field"><label>Preferred language</label><select id="translatorLang"><option value="">Select language</option><option>Arabic</option><option>Bengali</option><option>Urdu</option><option>Spanish</option></select></div></div>
+        <div class="form-group" id="grp-vatStatus"><label>For UK VAT purposes, please answer <span class="required">*</span></label><div class="radio-group"><label class="radio-card"><input type="radio" name="vatStatus" value="UK citizen"> UK citizen</label><label class="radio-card"><input type="radio" name="vatStatus" value="On VISA"> On VISA</label><label class="radio-card"><input type="radio" name="vatStatus" value="European citizen"> European citizen</label></div></div>
+      </div>
+      <div class="form-section"><div class="section-title">Agreement</div>
+        <div class="form-group" id="grp-terms"><label><input type="checkbox" id="agreeTerms"> I agree to the User Agreement Terms & Privacy Policy <span class="required">*</span></label></div>
+      </div>
+      <div class="btn-group"><button class="btn-pro btn-secondary" id="backToPage1Btn">← Back</button><button class="btn-pro btn-primary" id="gotoReviewBtn">Review Application →</button></div>
+    </div>
+
+    <!-- PAGE 3 -->
+    <div id="page3" class="form-page">
+      <div id="reviewContent"></div>
+      <div class="payment-section"><i class="fas fa-lock"></i> <strong>Secure Payment Required</strong><div class="payment-amount">£29.99</div><p>Includes application check, document verification, and submission to HMRC</p></div>
+      <div class="btn-group"><button class="btn-pro btn-secondary" id="backToPage2Btn">← Edit</button><button class="btn-pro btn-payment" id="paymentSubmitBtn"><i class="fas fa-credit-card"></i> Submit Application →</button></div>
+    </div>
+  </div>
+
+  <div id="successMessage" class="success-message" style="display: none;">
+    <i class="fas fa-check-circle" style="font-size: 56px; color: #059669; margin-bottom: 16px;"></i>
+    <h2>✅ Application Submitted Successfully!</h2>
+    <p id="successRefText"></p>
+    <p>📧 A confirmation email has been sent to your email address.</p>
+    <p>📋 All your details have been sent to the admin.</p>
+    <p>🔐 Please complete your payment:</p>
+    <a href="https://www.paypal.com/ncp/payment/HSCDGHFW3BV3A" target="_blank" class="btn-pro btn-payment" style="display: inline-block; margin: 16px 0; text-decoration: none;">Proceed to PayPal →</a>
+    <button class="btn-pro btn-secondary" onclick="location.reload()">New Application</button>
+  </div>
+</div>
+
+<script>
+// ========== EMAILJS CONFIGURATION (YOUR VALUES) ==========
+const EMAILJS_PUBLIC_KEY = "ezcPMtPbyAVX3pp3C";  // ⚠️ CHANGE THIS - Get from EmailJS Account → API Keys
+const EMAILJS_SERVICE_ID = "service_k99f56s";
+const EMAILJS_TEMPLATE_ID = "template_pnm0mjs";
+const ADMIN_EMAIL = "alenvikram50@gmail.com";
+const PAYPAL_LINK = "https://www.paypal.com/ncp/payment/HSCDGHFW3BV3A";
+
+// ========== FORM VALIDATION FUNCTIONS ==========
+function showError(groupId, message) {
+  const group = document.getElementById(groupId);
+  if (!group) return;
+  const oldMsg = group.querySelector('.error-message');
+  if (oldMsg) oldMsg.remove();
+  const errSpan = document.createElement('div');
+  errSpan.className = 'error-message';
+  errSpan.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+  group.appendChild(errSpan);
+  const inputEl = group.querySelector('input, select');
+  if (inputEl) inputEl.classList.add('error-input');
+}
+
+function clearError(groupId) {
+  const group = document.getElementById(groupId);
+  if (!group) return;
+  const errMsg = group.querySelector('.error-message');
+  if (errMsg) errMsg.remove();
+  const inputEl = group.querySelector('input, select');
+  if (inputEl) inputEl.classList.remove('error-input');
+}
+
+function clearAllErrors() {
+  document.querySelectorAll('.error-message').forEach(el => el.remove());
+  document.querySelectorAll('.error-input').forEach(el => el.classList.remove('error-input'));
+}
+
+function validatePage1() {
+  clearAllErrors();
+  let isValid = true;
+  if (!document.getElementById('title').value) { showError('grp-title', 'Select title'); isValid = false; }
+  if (!document.getElementById('firstName').value.trim()) { showError('grp-firstName', 'Enter first name'); isValid = false; }
+  if (!document.getElementById('lastName').value.trim()) { showError('grp-lastName', 'Enter last name'); isValid = false; }
+  if (!document.querySelector('input[name="gender"]:checked')) { showError('grp-gender', 'Select gender'); isValid = false; }
+  const day = document.getElementById('dobDay').value, month = document.getElementById('dobMonth').value, year = document.getElementById('dobYear').value;
+  if (!day || !month || !year) { showError('grp-dobDay', 'Enter complete DOB'); isValid = false; }
+  if (!document.querySelector('input[name="marital"]:checked')) { showError('grp-marital', 'Select marital status'); isValid = false; }
+  const email = document.getElementById('email').value.trim();
+  const confirm = document.getElementById('confirmEmail').value.trim();
+  if (!email) { showError('grp-email', 'Enter email'); isValid = false; }
+  else if (!/^[^\s@]+@([^\s@]+\.)+[^\s@]+$/.test(email)) { showError('grp-email', 'Valid email required'); isValid = false; }
+  if (!confirm) { showError('grp-confirmEmail', 'Confirm email'); isValid = false; }
+  else if (email !== confirm) { showError('grp-confirmEmail', 'Emails do not match'); isValid = false; }
+  if (!document.getElementById('phone').value.trim()) { showError('grp-phone', 'Enter phone'); isValid = false; }
+  if (!document.getElementById('houseNumber').value.trim()) { showError('grp-houseNumber', 'Enter house number'); isValid = false; }
+  if (!document.getElementById('streetName').value.trim()) { showError('grp-streetName', 'Enter street'); isValid = false; }
+  if (!document.getElementById('city').value.trim()) { showError('grp-city', 'Enter city'); isValid = false; }
+  if (!document.getElementById('postcode').value.trim()) { showError('grp-postcode', 'Enter postcode'); isValid = false; }
+  if (!document.getElementById('lastEntry').value) { showError('grp-lastEntry', 'Enter last entry date'); isValid = false; }
+  if (!document.querySelector('input[name="issuedNi"]:checked')) { showError('grp-issuedNi', 'Answer required'); isValid = false; }
+  if (!document.querySelector('input[name="ukBorn"]:checked')) { showError('grp-ukBorn', 'Answer required'); isValid = false; }
+  return isValid;
+}
+
+function validatePage2() {
+  clearAllErrors();
+  let isValid = true;
+  if (!document.getElementById('nationality').value) { showError('grp-nationality', 'Select nationality'); isValid = false; }
+  if (!document.querySelector('input[name="hasPassport"]:checked')) { showError('grp-hasPassport', 'Answer required'); isValid = false; }
+  if (!document.getElementById('reason').value) { showError('grp-reason', 'Select reason'); isValid = false; }
+  if (!document.querySelector('input[name="working"]:checked')) { showError('grp-working', 'Answer required'); isValid = false; }
+  if (!document.querySelector('input[name="vatStatus"]:checked')) { showError('grp-vatStatus', 'Select VAT status'); isValid = false; }
+  if (!document.getElementById('agreeTerms').checked) { showError('grp-terms', 'Accept terms'); isValid = false; }
+  return isValid;
+}
+
+// ========== NAVIGATION ==========
+let currentStep = 1;
+const page1 = document.getElementById('page1'), page2 = document.getElementById('page2'), page3 = document.getElementById('page3');
+const steps = document.querySelectorAll('.step');
+
+function updateProgressUI() {
+  steps.forEach((step, idx) => {
+    const stepNum = idx + 1;
+    if (stepNum < currentStep) step.classList.add('completed');
+    else step.classList.remove('completed');
+    if (stepNum === currentStep) step.classList.add('active');
+    else step.classList.remove('active');
+  });
+  const fill = document.getElementById('progressFill');
+  if (currentStep === 1) fill.style.width = '33%';
+  else if (currentStep === 2) fill.style.width = '66%';
+  else fill.style.width = '100%';
+}
+
+function showPage(page) {
+  page1.classList.remove('active-page');
+  page2.classList.remove('active-page');
+  page3.classList.remove('active-page');
+  if (page === 1) page1.classList.add('active-page');
+  if (page === 2) page2.classList.add('active-page');
+  if (page === 3) { buildReview(); page3.classList.add('active-page'); }
+  currentStep = page;
+  updateProgressUI();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function buildReview() {
+  const getRadio = (name) => document.querySelector(`input[name="${name}"]:checked`)?.value || '—';
+  const getText = (id) => document.getElementById(id)?.value.trim() || '—';
+  document.getElementById('reviewContent').innerHTML = `
+    <div class="review-section"><h3>Personal Information</h3>
+      <div class="review-row"><div class="review-label">Name:</div><div class="review-value">${getText('title')} ${getText('firstName')} ${getText('lastName')}</div></div>
+      <div class="review-row"><div class="review-label">DOB:</div><div class="review-value">${getText('dobDay')}/${getText('dobMonth')}/${getText('dobYear')}</div></div>
+      <div class="review-row"><div class="review-label">Address:</div><div class="review-value">${getText('houseNumber')} ${getText('streetName')}, ${getText('city')}, ${getText('postcode')}</div></div>
+      <div class="review-row"><div class="review-label">Email/Phone:</div><div class="review-value">${getText('email')} / ${getText('phone')}</div></div>
+    </div>
+    <div class="review-section"><h3>Application Details</h3>
+      <div class="review-row"><div class="review-label">Nationality:</div><div class="review-value">${getText('nationality')}</div></div>
+      <div class="review-row"><div class="review-label">Has Passport:</div><div class="review-value">${getRadio('hasPassport')}</div></div>
+      <div class="review-row"><div class="review-label">Reason:</div><div class="review-value">${document.getElementById('reason')?.options[document.getElementById('reason')?.selectedIndex]?.text || '—'}</div></div>
+    </div>`;
+}
+
+// ========== CONDITIONAL FIELDS ==========
+document.getElementById('nationality')?.addEventListener('change', function() {
+  document.getElementById('otherNationality').style.display = this.value === 'Other (specify)' ? 'block' : 'none';
+});
+document.querySelectorAll('input[name="dualNationality"]').forEach(r => r.addEventListener('change', function() {
+  document.getElementById('dualField').style.display = this.value === 'Yes' ? 'block' : 'none';
+}));
+document.querySelectorAll('input[name="translator"]').forEach(r => r.addEventListener('change', function() {
+  document.getElementById('translatorLangField').style.display = this.value === 'Yes' ? 'block' : 'none';
+}));
+const passportYes = document.getElementById('passportYes'), passportNo = document.getElementById('passportNo');
+function toggleNationalId() { document.getElementById('nationalIdCardGroup').style.display = passportNo?.checked ? 'block' : 'none'; }
+passportYes?.addEventListener('change', toggleNationalId);
+passportNo?.addEventListener('change', toggleNationalId);
+toggleNationalId();
+function togglePrev(radioName, fieldId) {
+  document.querySelectorAll(`input[name="${radioName}"]`).forEach(r => r.addEventListener('change', function() {
+    document.getElementById(fieldId).style.display = this.value === 'Yes' ? 'block' : 'none';
+  }));
+}
+togglePrev('prevFirstName', 'prevFirstNameField');
+togglePrev('prevMiddleName', 'prevMiddleField');
+togglePrev('prevLastName', 'prevLastNameField');
+
+document.getElementById('toPage2Btn')?.addEventListener('click', () => { if (validatePage1()) showPage(2); });
+document.getElementById('backToPage1Btn')?.addEventListener('click', () => showPage(1));
+document.getElementById('backToPage2Btn')?.addEventListener('click', () => showPage(2));
+document.getElementById('gotoReviewBtn')?.addEventListener('click', () => { if (validatePage2()) showPage(3); });
+
+// ========== EMAILJS SUBMIT HANDLER ==========
+let emailJSInitialized = false;
+
+function initEmailJS() {
+  return new Promise((resolve, reject) => {
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+      emailJSInitialized = true;
+      resolve();
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+    script.onload = () => {
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+      emailJSInitialized = true;
+      resolve();
+    };
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
+
+async function sendApplicationData(formData, reference) {
+  if (!emailJSInitialized) await initEmailJS();
+  
+  const fullAddress = `${formData.houseNumber} ${formData.streetName}, ${formData.city}, ${formData.postcode}`;
+  const dob = `${formData.dobDay}/${formData.dobMonth}/${formData.dobYear}`;
+  
+  const templateParams = {
+    to_email: ADMIN_EMAIL,
+    reference: reference,
+    submittedAt: new Date().toLocaleString(),
+    title: formData.title || 'Not provided',
+    firstName: formData.firstName,
+    lastName: formData.lastName,
+    gender: formData.gender || 'Not provided',
+    dob: dob,
+    maritalStatus: formData.maritalStatus || 'Not provided',
+    email: formData.email,
+    phone: formData.phone,
+    address: fullAddress,
+    lastEntryUK: formData.lastEntryUK || 'Not provided',
+    nationality: formData.nationality || 'Not provided',
+    hasPassport: formData.hasPassport || 'Not provided',
+    reason: formData.reasonForApplying || 'Not provided',
+    working: formData.isCurrentlyWorking || 'Not provided',
+    vatStatus: formData.vatStatus || 'Not provided',
+    paypal_link: PAYPAL_LINK
+  };
+  
+  try {
+    const result = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+    console.log('Email sent:', result);
+    return true;
+  } catch (error) {
+    console.error('Email error:', error);
+    return false;
+  }
+}
+
+// Submit Button Handler
+document.getElementById('paymentSubmitBtn')?.addEventListener('click', async () => {
+  if (!document.getElementById('agreeTerms')?.checked) {
+    alert('Please accept the terms on page 2');
+    showPage(2);
+    return;
+  }
+  
+  const getRadio = (name) => document.querySelector(`input[name="${name}"]:checked`)?.value || '';
+  const getText = (id) => document.getElementById(id)?.value.trim() || '';
+  
+  const formData = {
+    title: getText('title'),
+    firstName: getText('firstName'),
+    lastName: getText('lastName'),
+    email: getText('email'),
+    phone: getText('phone'),
+    houseNumber: getText('houseNumber'),
+    streetName: getText('streetName'),
+    city: getText('city'),
+    postcode: getText('postcode'),
+    dobDay: getText('dobDay'),
+    dobMonth: getText('dobMonth'),
+    dobYear: getText('dobYear'),
+    lastEntryUK: getText('lastEntry'),
+    nationality: getText('nationality'),
+    reasonForApplying: getText('reason'),
+    gender: getRadio('gender'),
+    maritalStatus: getRadio('marital'),
+    hasPassport: getRadio('hasPassport'),
+    isCurrentlyWorking: getRadio('working'),
+    vatStatus: getRadio('vatStatus')
+  };
+  
+  if (!formData.email || !formData.firstName || !formData.lastName) {
+    alert('Please fill all required fields');
+    showPage(1);
+    return;
+  }
+  
+  const reference = 'NI-' + Date.now() + '-' + Math.floor(Math.random() * 10000);
+  const btn = document.getElementById('paymentSubmitBtn');
+  const overlay = document.getElementById('loadingOverlay');
+  const originalText = btn.innerHTML;
+  
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+  btn.disabled = true;
+  overlay.style.display = 'flex';
+  
+  try {
+    const emailSent = await sendApplicationData(formData, reference);
+    
+    if (emailSent) {
+      document.getElementById('formContainer').style.display = 'none';
+      const successDiv = document.getElementById('successMessage');
+      document.getElementById('successRefText').innerHTML = `<strong>Reference: ${reference}</strong><br>Confirmation sent to: ${formData.email}`;
+      successDiv.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.open(PAYPAL_LINK, '_blank');
+    } else {
+      alert('Failed to send email. Please try again. Make sure you added your EmailJS Public Key!');
+      btn.innerHTML = originalText;
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Submission error: ' + error.message);
+    btn.innerHTML = originalText;
+  } finally {
+    overlay.style.display = 'none';
+    btn.disabled = false;
+  }
+});
+
+// Language selector
+document.getElementById('languageSelect')?.addEventListener('change', (e) => {
+  alert(`Language set to ${e.target.options[e.target.selectedIndex].text}`);
+});
+
+function checkEligibilityAlert() {
+  const issued = document.querySelector('input[name="issuedNi"]:checked')?.value;
+  const born = document.querySelector('input[name="ukBorn"]:checked')?.value;
+  document.getElementById('niRecoveryAlert').style.display = (issued === 'Yes' || born === 'Yes') ? 'block' : 'none';
+}
+document.querySelectorAll('input[name="issuedNi"], input[name="ukBorn"]').forEach(r => r.addEventListener('change', checkEligibilityAlert));
+
+showPage(1);
+checkEligibilityAlert();
+</script>
+</body>
+</html>
