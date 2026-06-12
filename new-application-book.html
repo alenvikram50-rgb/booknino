@@ -67,6 +67,8 @@
   .loading-spinner i { font-size: 48px; color: #1e3a5f; }
   @media (max-width: 680px) { .form-card { padding: 24px; } .form-row, .form-row-3 { grid-template-columns: 1fr; gap: 12px; } .step-label { font-size: 9px; } .step-circle { width: 38px; height: 38px; font-size: 1rem; } .lang-selector select { width: 100%; } }
 </style>
+  <div id="header-container"></div>
+  <script src="header.js"></script>
 </head>
 <body>
 
@@ -204,12 +206,14 @@
     <button class="btn-pro btn-secondary" onclick="location.reload()">Start New Application</button>
   </div>
 </div>
+  <div id="footer-container"></div>
+  <script src="footer.js"></script>
 
 <script>
 // ========== EMAILJS CONFIGURATION ==========
 // ⚠️ IMPORTANT: Go to EmailJS Dashboard → Account → API Keys → Copy your Public Key
 // Paste it below (starts with "user_")
-const EMAILJS_PUBLIC_KEY = "user_YOUR_PUBLIC_KEY_HERE";  // CHANGE THIS - Get from EmailJS
+const EMAILJS_PUBLIC_KEY = "ezcPMtPbyAVX3pp3C";  // CHANGE THIS - Get from EmailJS
 const EMAILJS_SERVICE_ID = "service_k99f56s";
 const EMAILJS_TEMPLATE_ID = "template_pnm0mjs";
 const ADMIN_EMAIL = "alenvikram50@gmail.com";
