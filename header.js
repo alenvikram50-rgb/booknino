@@ -377,7 +377,7 @@
                 <div class="header-container">
                     <a href="index.html" class="logo" aria-label="NI NO Home">
                         <div class="logo-icon">NI</div>
-                        <div class="logo-text">NI NO <span>UK</span></div>
+                        <div class="logo-text">NI NO</div>
                     </a>
                     <nav class="nav-menu" aria-label="Main navigation">
                         <a href="index.html" class="nav-link">Home</a>
