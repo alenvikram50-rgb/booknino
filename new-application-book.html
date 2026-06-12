@@ -65,10 +65,8 @@
   .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 1000; }
   .loading-spinner { background: white; padding: 30px 40px; border-radius: 24px; text-align: center; }
   .loading-spinner i { font-size: 48px; color: #1e3a5f; }
-  @media (max-width: 680px) { .form-card { padding: 24px; } .form-row, .form-row-3 { grid-template-columns: 1fr; gap: 12px; } .step-label { font-size: 9px; } .step-circle { width: 38px; height: 38px; font-size: 1rem; } .lang-selector select { width: 100%; } }
+  @media (max-width: 680px) { .form-card { padding: 24px; } .form-row, .form-row-3 { grid-template-columns: 1fr; gap: 12px; } .step-label { font-size: 9px; } .step-circle { width: 38px; height: 38px; font-size: 1rem; } }
 </style>
-  <div id="header-container"></div>
-  <script src="header.js"></script>
 </head>
 <body>
 
@@ -94,23 +92,6 @@
       <option value="bn">বাংলা (Bengali)</option>
       <option value="es">Español (Spanish)</option>
       <option value="fr">Français (French)</option>
-      <option value="de">Deutsch (German)</option>
-      <option value="it">Italiano (Italian)</option>
-      <option value="pt">Português (Portuguese)</option>
-      <option value="ru">Русский (Russian)</option>
-      <option value="ar">العربية (Arabic)</option>
-      <option value="zh">中文 (Chinese)</option>
-      <option value="ja">日本語 (Japanese)</option>
-      <option value="ko">한국어 (Korean)</option>
-      <option value="tr">Türkçe (Turkish)</option>
-      <option value="pl">Polski (Polish)</option>
-      <option value="ro">Română (Romanian)</option>
-      <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
-      <option value="ta">தமிழ் (Tamil)</option>
-      <option value="te">తెలుగు (Telugu)</option>
-      <option value="ml">മലയാളം (Malayalam)</option>
-      <option value="kn">ಕನ್ನಡ (Kannada)</option>
-      <option value="gu">ગુજરાતી (Gujarati)</option>
     </select>
   </div>
 
@@ -165,20 +146,20 @@
     <div id="page2" class="form-page">
       <div class="form-section"><div class="section-title">Nationality Details</div>
         <div class="form-group" id="grp-nationality"><label>Nationality <span class="required">*</span></label>
-          <select id="nationality"><option value="">Select Nationality</option><option>United Kingdom</option><option>Other (specify)</option><option>India</option><option>Pakistan</option><option>Bangladesh</option><option>USA</option><option>Canada</option><option>Australia</option><option>Nigeria</option><option>France</option><option>Germany</option><option>Italy</option><option>Spain</option><option>Portugal</option><option>Poland</option><option>Romania</option><option>Turkey</option><option>UAE</option><option>Saudi Arabia</option><option>China</option><option>Japan</option><option>South Korea</option></select>
+          <select id="nationality"><option value="">Select Nationality</option><option>United Kingdom</option><option>Other (specify)</option><option>India</option><option>Pakistan</option><option>Bangladesh</option><option>USA</option><option>Canada</option><option>Australia</option></select>
           <input type="text" id="otherNationality" placeholder="Please specify nationality" style="margin-top:8px; display:none;">
         </div>
-        <div class="form-group"><label>Do you have Dual Nationality?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="dualNationality" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="dualNationality" value="No" checked> No</label></div><div id="dualField" class="conditional-field"><label>Dual Nationality Country</label><select id="dualCountryList"><option value="">Select country</option><option>India</option><option>USA</option><option>Canada</option><option>Australia</option><option>Pakistan</option><option>Bangladesh</option></select></div></div>
+        <div class="form-group"><label>Do you have Dual Nationality?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="dualNationality" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="dualNationality" value="No" checked> No</label></div><div id="dualField" class="conditional-field"><label>Dual Nationality Country</label><select id="dualCountryList"><option value="">Select country</option><option>India</option><option>USA</option><option>Canada</option><option>Australia</option></select></div></div>
         <div class="form-group" id="grp-hasPassport"><label>Do you have a passport? <span class="required">*</span></label><div class="radio-group"><label class="radio-card"><input type="radio" name="hasPassport" value="Yes" id="passportYes"> Yes</label><label class="radio-card"><input type="radio" name="hasPassport" value="No" id="passportNo" checked> No</label></div></div>
         <div id="nationalIdCardGroup" style="display: none;"><div class="form-group"><label>Do you have a national identity card?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="hasIdCard" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="hasIdCard" value="No" checked> No</label></div></div></div>
         <div class="form-group"><label>Do you have a Biometric Residence Permit / Residence Permit?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="hasBrp" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="hasBrp" value="No" checked> No</label></div></div>
       </div>
       <div class="form-section"><div class="section-title">Application Details</div>
-        <div class="form-group" id="grp-reason"><label>Reason for applying? <span class="required">*</span></label><select id="reason"><option value="">Please select..</option><option value="work">Looking for work / Employment</option><option value="working">Already working (employer requested)</option><option value="student">Student needing NI for part-time work</option><option value="benefits">Benefits / Universal Credit application</option><option value="tax">Tax purposes only</option></select></div>
+        <div class="form-group" id="grp-reason"><label>Reason for applying? <span class="required">*</span></label><select id="reason"><option value="">Please select..</option><option value="work">Looking for work / Employment</option><option value="working">Already working (employer requested)</option><option value="student">Student needing NI for part-time work</option><option value="benefits">Benefits / Universal Credit application</option></select></div>
         <div class="form-group" id="grp-working"><label>Are you currently working? <span class="required">*</span></label><div class="radio-group"><label class="radio-card"><input type="radio" name="working" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="working" value="No"> No</label></div></div>
       </div>
       <div class="form-section"><div class="section-title">Additional Support</div>
-        <div class="form-group"><label>Do you require a translator?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="translator" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="translator" value="No" checked> No</label></div><div id="translatorLangField" class="conditional-field"><label>Preferred language</label><select id="translatorLang"><option value="">Select language</option><option>Arabic</option><option>Bengali</option><option>Urdu</option><option>Punjabi</option><option>Hindi</option><option>Spanish</option><option>French</option><option>German</option><option>Italian</option><option>Portuguese</option><option>Russian</option><option>Chinese</option></select></div></div>
+        <div class="form-group"><label>Do you require a translator?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="translator" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="translator" value="No" checked> No</label></div><div id="translatorLangField" class="conditional-field"><label>Preferred language</label><select id="translatorLang"><option value="">Select language</option><option>Arabic</option><option>Bengali</option><option>Urdu</option><option>Hindi</option></select></div></div>
         <div class="form-group" id="grp-vatStatus"><label>For UK VAT purposes, please answer <span class="required">*</span></label><div class="radio-group"><label class="radio-card"><input type="radio" name="vatStatus" value="UK citizen"> UK citizen</label><label class="radio-card"><input type="radio" name="vatStatus" value="On VISA"> On VISA</label><label class="radio-card"><input type="radio" name="vatStatus" value="European citizen"> European citizen</label></div></div>
       </div>
       <div class="form-section"><div class="section-title">Agreement</div>
@@ -206,16 +187,15 @@
     <button class="btn-pro btn-secondary" onclick="location.reload()">Start New Application</button>
   </div>
 </div>
-  <div id="footer-container"></div>
-  <script src="footer.js"></script>
 
 <script>
 // ========== EMAILJS CONFIGURATION ==========
-// ⚠️ IMPORTANT: Go to EmailJS Dashboard → Account → API Keys → Copy your Public Key
-// Paste it below (starts with "user_")
-const EMAILJS_PUBLIC_KEY = "ezcPMtPbyAVX3pp3C";  // CHANGE THIS - Get from EmailJS
+// ⚠️ CHANGE THESE THREE VALUES:
+const EMAILJS_PUBLIC_KEY = "ezcPMtPbyAVX3pp3C";  // Get from EmailJS Account → API Keys
 const EMAILJS_SERVICE_ID = "service_k99f56s";
-const EMAILJS_TEMPLATE_ID = "template_pnm0mjs";
+const EMAILJS_ADMIN_TEMPLATE_ID = "template_pnm0mjs";    // Your existing admin template
+const EMAILJS_USER_TEMPLATE_ID = "template_6tw5j54"; // ⚠️ CHANGE - Paste your user confirmation template ID here
+
 const ADMIN_EMAIL = "alenvikram50@gmail.com";
 const PAYPAL_LINK = "https://www.paypal.com/ncp/payment/HSCDGHFW3BV3A";
 
@@ -241,14 +221,14 @@ function initEmailJS() {
   });
 }
 
-async function sendApplicationData(formData, reference) {
+async function sendEmails(formData, reference) {
   if (!emailJSInitialized) await initEmailJS();
   
   const fullAddress = `${formData.houseNumber} ${formData.streetName}, ${formData.city}, ${formData.postcode}`;
   const dob = `${formData.dobDay}/${formData.dobMonth}/${formData.dobYear}`;
   
-  const emailParams = {
-    to_email: ADMIN_EMAIL,
+  // Common data for both emails
+  const emailData = {
     reference: reference,
     submittedAt: new Date().toLocaleString(),
     title: formData.title || 'Not provided',
@@ -270,8 +250,16 @@ async function sendApplicationData(formData, reference) {
   };
   
   try {
-    const result = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, emailParams);
-    console.log('Email sent successfully:', result);
+    // 1. Send email to ADMIN (alenvikram50@gmail.com)
+    const adminParams = { ...emailData, to_email: ADMIN_EMAIL };
+    const adminResult = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_ADMIN_TEMPLATE_ID, adminParams);
+    console.log('Admin email sent:', adminResult);
+    
+    // 2. Send confirmation email to USER
+    const userParams = { ...emailData, to_email: formData.email };
+    const userResult = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_USER_TEMPLATE_ID, userParams);
+    console.log('User confirmation email sent:', userResult);
+    
     return true;
   } catch (error) {
     console.error('EmailJS Error:', error);
@@ -279,7 +267,7 @@ async function sendApplicationData(formData, reference) {
   }
 }
 
-// ========== FORM VALIDATION FUNCTIONS ==========
+// ========== REST OF THE CODE (Validation, Navigation, etc.) ==========
 function showError(groupId, message) {
   const group = document.getElementById(groupId);
   if (!group) return;
@@ -346,7 +334,6 @@ function validatePage2() {
   return isValid;
 }
 
-// ========== NAVIGATION ==========
 let currentStep = 1;
 const page1 = document.getElementById('page1'), page2 = document.getElementById('page2'), page3 = document.getElementById('page3');
 const steps = document.querySelectorAll('.step');
@@ -389,17 +376,14 @@ function buildReview() {
     </div>
     <div class="review-section"><h3>Application Details</h3>
       <div class="review-row"><div class="review-label">Nationality:</div><div class="review-value">${getText('nationality')}</div></div>
-      <div class="review-row"><div class="review-label">Has Passport:</div><div class="review-value">${getRadio('hasPassport')}</div></div>
       <div class="review-row"><div class="review-label">Reason:</div><div class="review-value">${document.getElementById('reason')?.options[document.getElementById('reason')?.selectedIndex]?.text || '—'}</div></div>
-      <div class="review-row"><div class="review-label">Working:</div><div class="review-value">${getRadio('working')}</div></div>
-      <div class="review-row"><div class="review-label">VAT Status:</div><div class="review-value">${getRadio('vatStatus')}</div></div>
     </div>
     <div class="review-section"><h3>Payment</h3>
       <div class="review-row"><div class="review-label">Application Fee:</div><div class="review-value">£29.99</div></div>
     </div>`;
 }
 
-// ========== CONDITIONAL FIELDS ==========
+// Conditional fields
 document.getElementById('nationality')?.addEventListener('change', function() {
   document.getElementById('otherNationality').style.display = this.value === 'Other (specify)' ? 'block' : 'none';
 });
@@ -428,7 +412,7 @@ document.getElementById('backToPage1Btn')?.addEventListener('click', () => showP
 document.getElementById('backToPage2Btn')?.addEventListener('click', () => showPage(2));
 document.getElementById('gotoReviewBtn')?.addEventListener('click', () => { if (validatePage2()) showPage(3); });
 
-// ========== SUBMIT BUTTON HANDLER ==========
+// Submit Button Handler
 document.getElementById('paymentSubmitBtn')?.addEventListener('click', async () => {
   if (!document.getElementById('agreeTerms')?.checked) {
     alert('Please accept the terms on page 2');
@@ -478,9 +462,9 @@ document.getElementById('paymentSubmitBtn')?.addEventListener('click', async () 
   overlay.style.display = 'flex';
   
   try {
-    const emailSent = await sendApplicationData(formData, reference);
+    const emailsSent = await sendEmails(formData, reference);
     
-    if (emailSent) {
+    if (emailsSent) {
       document.getElementById('formContainer').style.display = 'none';
       const successDiv = document.getElementById('successMessage');
       document.getElementById('successRefText').innerHTML = `<strong>Reference: ${reference}</strong><br>Confirmation sent to: ${formData.email}`;
@@ -488,7 +472,7 @@ document.getElementById('paymentSubmitBtn')?.addEventListener('click', async () 
       window.scrollTo({ top: 0, behavior: 'smooth' });
       window.open(PAYPAL_LINK, '_blank');
     } else {
-      alert('Failed to send email. Please make sure you have added your EmailJS Public Key in the code!');
+      alert('Failed to send email. Please check your EmailJS configuration!');
       btn.innerHTML = originalText;
     }
   } catch (error) {
@@ -501,7 +485,6 @@ document.getElementById('paymentSubmitBtn')?.addEventListener('click', async () 
   }
 });
 
-// Language selector
 document.getElementById('languageSelect')?.addEventListener('change', (e) => {
   alert(`Language set to ${e.target.options[e.target.selectedIndex].text}`);
 });
