@@ -65,7 +65,7 @@
   .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 1000; }
   .loading-spinner { background: white; padding: 30px 40px; border-radius: 24px; text-align: center; }
   .loading-spinner i { font-size: 48px; color: #1e3a5f; }
-  @media (max-width: 680px) { .form-card { padding: 24px; } .form-row, .form-row-3 { grid-template-columns: 1fr; gap: 12px; } .step-label { font-size: 9px; } .step-circle { width: 38px; height: 38px; font-size: 1rem; } }
+  @media (max-width: 680px) { .form-card { padding: 24px; } .form-row, .form-row-3 { grid-template-columns: 1fr; gap: 12px; } .step-label { font-size: 9px; } .step-circle { width: 38px; height: 38px; font-size: 1rem; } .lang-selector select { width: 100%; } }
 </style>
 </head>
 <body>
@@ -84,6 +84,34 @@
     <div class="subhead">Real-time validation — red borders disappear instantly when you fill the field.</div>
   </div>
 
+  <div class="lang-selector">
+    <select id="languageSelect">
+      <option value="en">English (UK) 🇬🇧</option>
+      <option value="hi">हिन्दी (Hindi)</option>
+      <option value="ur">اردو (Urdu)</option>
+      <option value="bn">বাংলা (Bengali)</option>
+      <option value="es">Español (Spanish)</option>
+      <option value="fr">Français (French)</option>
+      <option value="de">Deutsch (German)</option>
+      <option value="it">Italiano (Italian)</option>
+      <option value="pt">Português (Portuguese)</option>
+      <option value="ru">Русский (Russian)</option>
+      <option value="ar">العربية (Arabic)</option>
+      <option value="zh">中文 (Chinese)</option>
+      <option value="ja">日本語 (Japanese)</option>
+      <option value="ko">한국어 (Korean)</option>
+      <option value="tr">Türkçe (Turkish)</option>
+      <option value="pl">Polski (Polish)</option>
+      <option value="ro">Română (Romanian)</option>
+      <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+      <option value="ta">தமிழ் (Tamil)</option>
+      <option value="te">తెలుగు (Telugu)</option>
+      <option value="ml">മലയാളം (Malayalam)</option>
+      <option value="kn">ಕನ್ನಡ (Kannada)</option>
+      <option value="gu">ગુજરાતી (Gujarati)</option>
+    </select>
+  </div>
+
   <div class="step-indicator">
     <div class="step active" data-step="1"><div class="step-circle">1</div><div class="step-label">Personal Details</div></div>
     <div class="step" data-step="2"><div class="step-circle">2</div><div class="step-label">Nationality & Eligibility</div></div>
@@ -96,15 +124,18 @@
     <div id="page1" class="form-page active-page">
       <div id="niRecoveryAlert" class="alert-warning"><i class="fas fa-exclamation-triangle"></i> <strong>You may already have a National Insurance Number!</strong><br>You can <a href="#">recover your existing National Insurance Number here</a>.</div>
       <div class="form-section"><div class="section-title">Eligibility Check</div>
-        <div class="form-group" id="grp-issuedNi"><label>Have you been issued a National Insurance Number in the past? <span class="required">*</span></label>
+        <div class="form-group" id="grp-issuedNi">
+          <label>Have you been issued a National Insurance Number in the past? <span class="required">*</span></label>
           <div class="radio-group"><label class="radio-card"><input type="radio" name="issuedNi" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="issuedNi" value="No" checked> No</label></div>
         </div>
-        <div class="form-group" id="grp-ukBorn"><label>Are you a UK citizen, who was born in the United Kingdom? <span class="required">*</span></label>
+        <div class="form-group" id="grp-ukBorn">
+          <label>Are you a UK citizen, who was born in the United Kingdom? <span class="required">*</span></label>
           <div class="radio-group"><label class="radio-card"><input type="radio" name="ukBorn" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="ukBorn" value="No" checked> No</label></div>
         </div>
       </div>
       <div class="form-section"><div class="section-title">Personal Information</div>
-        <div class="form-group" id="grp-gender"><label>Gender <span class="required">*</span></label>
+        <div class="form-group" id="grp-gender">
+          <label>Gender <span class="required">*</span></label>
           <div class="radio-group"><label class="radio-card"><input type="radio" name="gender" value="Male"> Male</label><label class="radio-card"><input type="radio" name="gender" value="Female"> Female</label></div>
         </div>
         <div class="form-row"><div class="form-group" id="grp-title"><label>Title <span class="required">*</span></label><select id="title"><option value="">Select</option><option>Mr</option><option>Mrs</option><option>Miss</option><option>Ms</option><option>Dr</option></select></div><div class="form-group" id="grp-firstName"><label>First Name <span class="required">*</span></label><input type="text" id="firstName"></div></div>
@@ -113,7 +144,8 @@
         <div class="form-group"><label>Do you have a previous middle name?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="prevMiddleName" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="prevMiddleName" value="No" checked> No</label></div><div id="prevMiddleField" class="conditional-field"><input type="text" id="prevMiddleVal" placeholder="Previous middle name"></div></div>
         <div class="form-row"><div class="form-group" id="grp-lastName"><label>Last Name <span class="required">*</span></label><input type="text" id="lastName"></div><div class="form-group"><label>Do you have a previous last name?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="prevLastName" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="prevLastName" value="No" checked> No</label></div><div id="prevLastNameField" class="conditional-field"><input type="text" id="prevLastNameVal" placeholder="Previous last name"></div></div></div>
         <div class="form-row-3"><div class="form-group" id="grp-dobDay"><label>Day <span class="required">*</span></label><select id="dobDay"><option value="">DD</option><script>for(let i=1;i<=31;i++)document.write(`<option value="${i}">${i}</option>`);</script></select></div><div class="form-group" id="grp-dobMonth"><label>Month <span class="required">*</span></label><select id="dobMonth"><option value="">MM</option><script>for(let i=1;i<=12;i++)document.write(`<option value="${i}">${i}</option>`);</script></select></div><div class="form-group" id="grp-dobYear"><label>Year <span class="required">*</span></label><select id="dobYear"><option value="">YYYY</option><script>for(let i=2025;i>=1920;i--)document.write(`<option value="${i}">${i}</option>`);</script></select></div></div>
-        <div class="form-group" id="grp-marital"><label>Marital status <span class="required">*</span></label>
+        <div class="form-group" id="grp-marital">
+          <label>Marital status <span class="required">*</span></label>
           <div class="radio-group"><label class="radio-card"><input type="radio" name="marital" value="Single"> Single</label><label class="radio-card"><input type="radio" name="marital" value="Married"> Married</label><label class="radio-card"><input type="radio" name="marital" value="Civil Partnership"> Civil Partnership</label><label class="radio-card"><input type="radio" name="marital" value="Divorced"> Divorced</label><label class="radio-card"><input type="radio" name="marital" value="Widow"> Widow</label></div>
         </div>
       </div>
@@ -131,20 +163,20 @@
     <div id="page2" class="form-page">
       <div class="form-section"><div class="section-title">Nationality Details</div>
         <div class="form-group" id="grp-nationality"><label>Nationality <span class="required">*</span></label>
-          <select id="nationality"><option value="">Select Nationality</option><option>United Kingdom</option><option>Other (specify)</option><option>India</option><option>Pakistan</option><option>Bangladesh</option><option>USA</option><option>Canada</option><option>Australia</option><option>Nigeria</option><option>France</option><option>Germany</option></select>
+          <select id="nationality"><option value="">Select Nationality</option><option>United Kingdom</option><option>Other (specify)</option><option>India</option><option>Pakistan</option><option>Bangladesh</option><option>USA</option><option>Canada</option><option>Australia</option><option>Nigeria</option><option>France</option><option>Germany</option><option>Italy</option><option>Spain</option><option>Portugal</option><option>Poland</option><option>Romania</option><option>Turkey</option><option>UAE</option><option>Saudi Arabia</option><option>China</option><option>Japan</option><option>South Korea</option></select>
           <input type="text" id="otherNationality" placeholder="Please specify nationality" style="margin-top:8px; display:none;">
         </div>
-        <div class="form-group"><label>Do you have Dual Nationality?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="dualNationality" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="dualNationality" value="No" checked> No</label></div><div id="dualField" class="conditional-field"><label>Dual Nationality Country</label><select id="dualCountryList"><option value="">Select country</option><option>India</option><option>USA</option><option>Canada</option><option>Australia</option></select></div></div>
+        <div class="form-group"><label>Do you have Dual Nationality?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="dualNationality" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="dualNationality" value="No" checked> No</label></div><div id="dualField" class="conditional-field"><label>Dual Nationality Country</label><select id="dualCountryList"><option value="">Select country</option><option>India</option><option>USA</option><option>Canada</option><option>Australia</option><option>Pakistan</option><option>Bangladesh</option></select></div></div>
         <div class="form-group" id="grp-hasPassport"><label>Do you have a passport? <span class="required">*</span></label><div class="radio-group"><label class="radio-card"><input type="radio" name="hasPassport" value="Yes" id="passportYes"> Yes</label><label class="radio-card"><input type="radio" name="hasPassport" value="No" id="passportNo" checked> No</label></div></div>
         <div id="nationalIdCardGroup" style="display: none;"><div class="form-group"><label>Do you have a national identity card?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="hasIdCard" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="hasIdCard" value="No" checked> No</label></div></div></div>
         <div class="form-group"><label>Do you have a Biometric Residence Permit / Residence Permit?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="hasBrp" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="hasBrp" value="No" checked> No</label></div></div>
       </div>
       <div class="form-section"><div class="section-title">Application Details</div>
-        <div class="form-group" id="grp-reason"><label>Reason for applying? <span class="required">*</span></label><select id="reason"><option value="">Please select..</option><option value="work">Looking for work / Employment</option><option value="working">Already working (employer requested)</option><option value="student">Student needing NI for part-time work</option><option value="benefits">Benefits / Universal Credit application</option></select></div>
+        <div class="form-group" id="grp-reason"><label>Reason for applying? <span class="required">*</span></label><select id="reason"><option value="">Please select..</option><option value="work">Looking for work / Employment</option><option value="working">Already working (employer requested)</option><option value="student">Student needing NI for part-time work</option><option value="benefits">Benefits / Universal Credit application</option><option value="tax">Tax purposes only</option></select></div>
         <div class="form-group" id="grp-working"><label>Are you currently working? <span class="required">*</span></label><div class="radio-group"><label class="radio-card"><input type="radio" name="working" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="working" value="No"> No</label></div></div>
       </div>
       <div class="form-section"><div class="section-title">Additional Support</div>
-        <div class="form-group"><label>Do you require a translator?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="translator" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="translator" value="No" checked> No</label></div><div id="translatorLangField" class="conditional-field"><label>Preferred language</label><select id="translatorLang"><option value="">Select language</option><option>Arabic</option><option>Bengali</option><option>Urdu</option><option>Spanish</option></select></div></div>
+        <div class="form-group"><label>Do you require a translator?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="translator" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="translator" value="No" checked> No</label></div><div id="translatorLangField" class="conditional-field"><label>Preferred language</label><select id="translatorLang"><option value="">Select language</option><option>Arabic</option><option>Bengali</option><option>Urdu</option><option>Punjabi</option><option>Hindi</option><option>Spanish</option><option>French</option><option>German</option><option>Italian</option><option>Portuguese</option><option>Russian</option><option>Chinese</option></select></div></div>
         <div class="form-group" id="grp-vatStatus"><label>For UK VAT purposes, please answer <span class="required">*</span></label><div class="radio-group"><label class="radio-card"><input type="radio" name="vatStatus" value="UK citizen"> UK citizen</label><label class="radio-card"><input type="radio" name="vatStatus" value="On VISA"> On VISA</label><label class="radio-card"><input type="radio" name="vatStatus" value="European citizen"> European citizen</label></div></div>
       </div>
       <div class="form-section"><div class="section-title">Agreement</div>
@@ -156,30 +188,92 @@
     <!-- PAGE 3 -->
     <div id="page3" class="form-page">
       <div id="reviewContent"></div>
-      <div class="payment-section"><i class="fas fa-lock"></i> <strong>Secure Payment Required</strong><div class="payment-amount">£29.99</div><p>Includes application check, document verification, and submission to HMRC</p></div>
+      <div class="payment-section"><i class="fas fa-lock" style="color:#059669;"></i> <strong>Secure Payment Required</strong><div class="payment-amount">£29.99</div><p style="font-size:13px;">Includes application check, document verification, and submission to HMRC</p></div>
       <div class="btn-group"><button class="btn-pro btn-secondary" id="backToPage2Btn">← Edit</button><button class="btn-pro btn-payment" id="paymentSubmitBtn"><i class="fas fa-credit-card"></i> Submit Application →</button></div>
     </div>
   </div>
 
-  <div id="successMessage" class="success-message" style="display: none;">
+  <div id="successMessage" class="success-message">
     <i class="fas fa-check-circle" style="font-size: 56px; color: #059669; margin-bottom: 16px;"></i>
     <h2>✅ Application Submitted Successfully!</h2>
     <p id="successRefText"></p>
     <p>📧 A confirmation email has been sent to your email address.</p>
     <p>📋 All your details have been sent to the admin.</p>
-    <p>🔐 Please complete your payment:</p>
-    <a href="https://www.paypal.com/ncp/payment/HSCDGHFW3BV3A" target="_blank" class="btn-pro btn-payment" style="display: inline-block; margin: 16px 0; text-decoration: none;">Proceed to PayPal →</a>
-    <button class="btn-pro btn-secondary" onclick="location.reload()">New Application</button>
+    <p>🔐 Please complete your payment to finalize:</p>
+    <a href="https://www.paypal.com/ncp/payment/HSCDGHFW3BV3A" target="_blank" class="btn-pro btn-payment" style="display: inline-block; margin: 16px 0; text-decoration: none;">Proceed to PayPal Payment →</a>
+    <button class="btn-pro btn-secondary" onclick="location.reload()">Start New Application</button>
   </div>
 </div>
 
 <script>
-// ========== EMAILJS CONFIGURATION (YOUR VALUES) ==========
-const EMAILJS_PUBLIC_KEY = "ezcPMtPbyAVX3pp3C";  // ⚠️ CHANGE THIS - Get from EmailJS Account → API Keys
+// ========== EMAILJS CONFIGURATION ==========
+// ⚠️ IMPORTANT: Go to EmailJS Dashboard → Account → API Keys → Copy your Public Key
+// Paste it below (starts with "user_")
+const EMAILJS_PUBLIC_KEY = "user_YOUR_PUBLIC_KEY_HERE";  // CHANGE THIS - Get from EmailJS
 const EMAILJS_SERVICE_ID = "service_k99f56s";
 const EMAILJS_TEMPLATE_ID = "template_pnm0mjs";
 const ADMIN_EMAIL = "alenvikram50@gmail.com";
 const PAYPAL_LINK = "https://www.paypal.com/ncp/payment/HSCDGHFW3BV3A";
+
+let emailJSInitialized = false;
+
+function initEmailJS() {
+  return new Promise((resolve, reject) => {
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+      emailJSInitialized = true;
+      resolve();
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+    script.onload = () => {
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+      emailJSInitialized = true;
+      resolve();
+    };
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
+
+async function sendApplicationData(formData, reference) {
+  if (!emailJSInitialized) await initEmailJS();
+  
+  const fullAddress = `${formData.houseNumber} ${formData.streetName}, ${formData.city}, ${formData.postcode}`;
+  const dob = `${formData.dobDay}/${formData.dobMonth}/${formData.dobYear}`;
+  
+  const emailParams = {
+    to_email: ADMIN_EMAIL,
+    reference: reference,
+    submittedAt: new Date().toLocaleString(),
+    title: formData.title || 'Not provided',
+    firstName: formData.firstName,
+    lastName: formData.lastName,
+    gender: formData.gender || 'Not provided',
+    dob: dob,
+    maritalStatus: formData.maritalStatus || 'Not provided',
+    email: formData.email,
+    phone: formData.phone,
+    address: fullAddress,
+    lastEntryUK: formData.lastEntryUK || 'Not provided',
+    nationality: formData.nationality || 'Not provided',
+    hasPassport: formData.hasPassport || 'Not provided',
+    reason: formData.reasonForApplying || 'Not provided',
+    working: formData.isCurrentlyWorking || 'Not provided',
+    vatStatus: formData.vatStatus || 'Not provided',
+    paypal_link: PAYPAL_LINK
+  };
+  
+  try {
+    const result = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, emailParams);
+    console.log('Email sent successfully:', result);
+    return true;
+  } catch (error) {
+    console.error('EmailJS Error:', error);
+    return false;
+  }
+}
 
 // ========== FORM VALIDATION FUNCTIONS ==========
 function showError(groupId, message) {
@@ -293,6 +387,11 @@ function buildReview() {
       <div class="review-row"><div class="review-label">Nationality:</div><div class="review-value">${getText('nationality')}</div></div>
       <div class="review-row"><div class="review-label">Has Passport:</div><div class="review-value">${getRadio('hasPassport')}</div></div>
       <div class="review-row"><div class="review-label">Reason:</div><div class="review-value">${document.getElementById('reason')?.options[document.getElementById('reason')?.selectedIndex]?.text || '—'}</div></div>
+      <div class="review-row"><div class="review-label">Working:</div><div class="review-value">${getRadio('working')}</div></div>
+      <div class="review-row"><div class="review-label">VAT Status:</div><div class="review-value">${getRadio('vatStatus')}</div></div>
+    </div>
+    <div class="review-section"><h3>Payment</h3>
+      <div class="review-row"><div class="review-label">Application Fee:</div><div class="review-value">£29.99</div></div>
     </div>`;
 }
 
@@ -325,68 +424,7 @@ document.getElementById('backToPage1Btn')?.addEventListener('click', () => showP
 document.getElementById('backToPage2Btn')?.addEventListener('click', () => showPage(2));
 document.getElementById('gotoReviewBtn')?.addEventListener('click', () => { if (validatePage2()) showPage(3); });
 
-// ========== EMAILJS SUBMIT HANDLER ==========
-let emailJSInitialized = false;
-
-function initEmailJS() {
-  return new Promise((resolve, reject) => {
-    if (typeof emailjs !== 'undefined') {
-      emailjs.init(EMAILJS_PUBLIC_KEY);
-      emailJSInitialized = true;
-      resolve();
-      return;
-    }
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
-    script.onload = () => {
-      emailjs.init(EMAILJS_PUBLIC_KEY);
-      emailJSInitialized = true;
-      resolve();
-    };
-    script.onerror = reject;
-    document.head.appendChild(script);
-  });
-}
-
-async function sendApplicationData(formData, reference) {
-  if (!emailJSInitialized) await initEmailJS();
-  
-  const fullAddress = `${formData.houseNumber} ${formData.streetName}, ${formData.city}, ${formData.postcode}`;
-  const dob = `${formData.dobDay}/${formData.dobMonth}/${formData.dobYear}`;
-  
-  const templateParams = {
-    to_email: ADMIN_EMAIL,
-    reference: reference,
-    submittedAt: new Date().toLocaleString(),
-    title: formData.title || 'Not provided',
-    firstName: formData.firstName,
-    lastName: formData.lastName,
-    gender: formData.gender || 'Not provided',
-    dob: dob,
-    maritalStatus: formData.maritalStatus || 'Not provided',
-    email: formData.email,
-    phone: formData.phone,
-    address: fullAddress,
-    lastEntryUK: formData.lastEntryUK || 'Not provided',
-    nationality: formData.nationality || 'Not provided',
-    hasPassport: formData.hasPassport || 'Not provided',
-    reason: formData.reasonForApplying || 'Not provided',
-    working: formData.isCurrentlyWorking || 'Not provided',
-    vatStatus: formData.vatStatus || 'Not provided',
-    paypal_link: PAYPAL_LINK
-  };
-  
-  try {
-    const result = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-    console.log('Email sent:', result);
-    return true;
-  } catch (error) {
-    console.error('Email error:', error);
-    return false;
-  }
-}
-
-// Submit Button Handler
+// ========== SUBMIT BUTTON HANDLER ==========
 document.getElementById('paymentSubmitBtn')?.addEventListener('click', async () => {
   if (!document.getElementById('agreeTerms')?.checked) {
     alert('Please accept the terms on page 2');
@@ -446,7 +484,7 @@ document.getElementById('paymentSubmitBtn')?.addEventListener('click', async () 
       window.scrollTo({ top: 0, behavior: 'smooth' });
       window.open(PAYPAL_LINK, '_blank');
     } else {
-      alert('Failed to send email. Please try again. Make sure you added your EmailJS Public Key!');
+      alert('Failed to send email. Please make sure you have added your EmailJS Public Key in the code!');
       btn.innerHTML = originalText;
     }
   } catch (error) {
@@ -471,6 +509,17 @@ function checkEligibilityAlert() {
 }
 document.querySelectorAll('input[name="issuedNi"], input[name="ukBorn"]').forEach(r => r.addEventListener('change', checkEligibilityAlert));
 
+function attachLiveClear() {
+  document.querySelectorAll('input, select, .radio-card input').forEach(el => {
+    el.addEventListener('input', function() { const pg = this.closest('.form-group'); if(pg) clearError(pg.id); });
+    el.addEventListener('change', function() { const pg = this.closest('.form-group'); if(pg) clearError(pg.id); });
+  });
+  document.querySelectorAll('.radio-card').forEach(card => {
+    card.addEventListener('click', function() { const pg = this.closest('.form-group'); if(pg) clearError(pg.id); });
+  });
+}
+
+attachLiveClear();
 showPage(1);
 checkEligibilityAlert();
 </script>
