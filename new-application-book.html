@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>NI NO Pro | UK National Insurance Number Application</title>
-<meta name="description" content="Professional NI Number application form with real-time validation">
+<meta name="description" content="Professional NI Number application form with real-time validation. 75+ countries supported.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
@@ -67,8 +67,6 @@
   .loading-spinner i { font-size: 48px; color: #1e3a5f; }
   @media (max-width: 680px) { .form-card { padding: 24px; } .form-row, .form-row-3 { grid-template-columns: 1fr; gap: 12px; } .step-label { font-size: 9px; } .step-circle { width: 38px; height: 38px; font-size: 1rem; } }
 </style>
-<div id="header-container"></div>
-<script src="header.js"></script>
 </head>
 <body>
 
@@ -83,7 +81,7 @@
   <div class="header">
     <div class="badge"><i class="fas fa-file-alt"></i> NI NO · Premium Application Service</div>
     <h1>UK National Insurance Number Application</h1>
-    <div class="subhead">Real-time validation — red borders disappear instantly when you fill the field.</div>
+    <div class="subhead">Real-time validation — red borders disappear instantly when you fill the field. 75+ countries supported.</div>
   </div>
 
   <div class="lang-selector">
@@ -94,6 +92,21 @@
       <option value="bn">বাংলা (Bengali)</option>
       <option value="es">Español (Spanish)</option>
       <option value="fr">Français (French)</option>
+      <option value="de">Deutsch (German)</option>
+      <option value="it">Italiano (Italian)</option>
+      <option value="pt">Português (Portuguese)</option>
+      <option value="ru">Русский (Russian)</option>
+      <option value="ar">العربية (Arabic)</option>
+      <option value="zh">中文 (Chinese)</option>
+      <option value="ja">日本語 (Japanese)</option>
+      <option value="ko">한국어 (Korean)</option>
+      <option value="tr">Türkçe (Turkish)</option>
+      <option value="pl">Polski (Polish)</option>
+      <option value="ro">Română (Romanian)</option>
+      <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+      <option value="gu">ગુજરાતી (Gujarati)</option>
+      <option value="ta">தமிழ் (Tamil)</option>
+      <option value="te">తెలుగు (Telugu)</option>
     </select>
   </div>
 
@@ -148,20 +161,211 @@
     <div id="page2" class="form-page">
       <div class="form-section"><div class="section-title">Nationality Details</div>
         <div class="form-group" id="grp-nationality"><label>Nationality <span class="required">*</span></label>
-          <select id="nationality"><option value="">Select Nationality</option><option>United Kingdom</option><option>Other (specify)</option><option>India</option><option>Pakistan</option><option>Bangladesh</option><option>USA</option><option>Canada</option><option>Australia</option></select>
+          <select id="nationality">
+            <option value="">Select Nationality</option>
+            <option>United Kingdom</option>
+            <option>Other (specify)</option>
+            <option>Afghanistan</option>
+            <option>Albania</option>
+            <option>Algeria</option>
+            <option>Andorra</option>
+            <option>Angola</option>
+            <option>Argentina</option>
+            <option>Armenia</option>
+            <option>Australia</option>
+            <option>Austria</option>
+            <option>Azerbaijan</option>
+            <option>Bahamas</option>
+            <option>Bahrain</option>
+            <option>Bangladesh</option>
+            <option>Barbados</option>
+            <option>Belarus</option>
+            <option>Belgium</option>
+            <option>Belize</option>
+            <option>Benin</option>
+            <option>Bhutan</option>
+            <option>Bolivia</option>
+            <option>Bosnia</option>
+            <option>Botswana</option>
+            <option>Brazil</option>
+            <option>Brunei</option>
+            <option>Bulgaria</option>
+            <option>Burkina Faso</option>
+            <option>Burundi</option>
+            <option>Cambodia</option>
+            <option>Cameroon</option>
+            <option>Canada</option>
+            <option>Cape Verde</option>
+            <option>Chad</option>
+            <option>Chile</option>
+            <option>China</option>
+            <option>Colombia</option>
+            <option>Comoros</option>
+            <option>Congo</option>
+            <option>Costa Rica</option>
+            <option>Croatia</option>
+            <option>Cuba</option>
+            <option>Cyprus</option>
+            <option>Czech Republic</option>
+            <option>Denmark</option>
+            <option>Djibouti</option>
+            <option>Dominica</option>
+            <option>Dominican Republic</option>
+            <option>Ecuador</option>
+            <option>Egypt</option>
+            <option>El Salvador</option>
+            <option>Equatorial Guinea</option>
+            <option>Eritrea</option>
+            <option>Estonia</option>
+            <option>Eswatini</option>
+            <option>Ethiopia</option>
+            <option>Fiji</option>
+            <option>Finland</option>
+            <option>France</option>
+            <option>Gabon</option>
+            <option>Gambia</option>
+            <option>Georgia</option>
+            <option>Germany</option>
+            <option>Ghana</option>
+            <option>Greece</option>
+            <option>Grenada</option>
+            <option>Guatemala</option>
+            <option>Guinea</option>
+            <option>Guinea-Bissau</option>
+            <option>Guyana</option>
+            <option>Haiti</option>
+            <option>Honduras</option>
+            <option>Hungary</option>
+            <option>Iceland</option>
+            <option>India</option>
+            <option>Indonesia</option>
+            <option>Iran</option>
+            <option>Iraq</option>
+            <option>Ireland</option>
+            <option>Israel</option>
+            <option>Italy</option>
+            <option>Jamaica</option>
+            <option>Japan</option>
+            <option>Jordan</option>
+            <option>Kazakhstan</option>
+            <option>Kenya</option>
+            <option>Kiribati</option>
+            <option>Kuwait</option>
+            <option>Kyrgyzstan</option>
+            <option>Laos</option>
+            <option>Latvia</option>
+            <option>Lebanon</option>
+            <option>Lesotho</option>
+            <option>Liberia</option>
+            <option>Libya</option>
+            <option>Liechtenstein</option>
+            <option>Lithuania</option>
+            <option>Luxembourg</option>
+            <option>Madagascar</option>
+            <option>Malawi</option>
+            <option>Malaysia</option>
+            <option>Maldives</option>
+            <option>Mali</option>
+            <option>Malta</option>
+            <option>Marshall Islands</option>
+            <option>Mauritania</option>
+            <option>Mauritius</option>
+            <option>Mexico</option>
+            <option>Micronesia</option>
+            <option>Moldova</option>
+            <option>Monaco</option>
+            <option>Mongolia</option>
+            <option>Montenegro</option>
+            <option>Morocco</option>
+            <option>Mozambique</option>
+            <option>Myanmar</option>
+            <option>Namibia</option>
+            <option>Nauru</option>
+            <option>Nepal</option>
+            <option>Netherlands</option>
+            <option>New Zealand</option>
+            <option>Nicaragua</option>
+            <option>Niger</option>
+            <option>Nigeria</option>
+            <option>North Korea</option>
+            <option>North Macedonia</option>
+            <option>Norway</option>
+            <option>Oman</option>
+            <option>Pakistan</option>
+            <option>Palau</option>
+            <option>Palestine</option>
+            <option>Panama</option>
+            <option>Papua New Guinea</option>
+            <option>Paraguay</option>
+            <option>Peru</option>
+            <option>Philippines</option>
+            <option>Poland</option>
+            <option>Portugal</option>
+            <option>Qatar</option>
+            <option>Romania</option>
+            <option>Russia</option>
+            <option>Rwanda</option>
+            <option>Samoa</option>
+            <option>San Marino</option>
+            <option>Saudi Arabia</option>
+            <option>Senegal</option>
+            <option>Serbia</option>
+            <option>Seychelles</option>
+            <option>Sierra Leone</option>
+            <option>Singapore</option>
+            <option>Slovakia</option>
+            <option>Slovenia</option>
+            <option>Solomon Islands</option>
+            <option>Somalia</option>
+            <option>South Africa</option>
+            <option>South Korea</option>
+            <option>South Sudan</option>
+            <option>Spain</option>
+            <option>Sri Lanka</option>
+            <option>Sudan</option>
+            <option>Suriname</option>
+            <option>Sweden</option>
+            <option>Switzerland</option>
+            <option>Syria</option>
+            <option>Taiwan</option>
+            <option>Tajikistan</option>
+            <option>Tanzania</option>
+            <option>Thailand</option>
+            <option>Timor-Leste</option>
+            <option>Togo</option>
+            <option>Tonga</option>
+            <option>Trinidad and Tobago</option>
+            <option>Tunisia</option>
+            <option>Turkey</option>
+            <option>Turkmenistan</option>
+            <option>Tuvalu</option>
+            <option>Uganda</option>
+            <option>Ukraine</option>
+            <option>United Arab Emirates</option>
+            <option>United States</option>
+            <option>Uruguay</option>
+            <option>Uzbekistan</option>
+            <option>Vanuatu</option>
+            <option>Vatican City</option>
+            <option>Venezuela</option>
+            <option>Vietnam</option>
+            <option>Yemen</option>
+            <option>Zambia</option>
+            <option>Zimbabwe</option>
+          </select>
           <input type="text" id="otherNationality" placeholder="Please specify nationality" style="margin-top:8px; display:none;">
         </div>
-        <div class="form-group"><label>Do you have Dual Nationality?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="dualNationality" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="dualNationality" value="No" checked> No</label></div><div id="dualField" class="conditional-field"><label>Dual Nationality Country</label><select id="dualCountryList"><option value="">Select country</option><option>India</option><option>USA</option><option>Canada</option><option>Australia</option></select></div></div>
+        <div class="form-group"><label>Do you have Dual Nationality?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="dualNationality" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="dualNationality" value="No" checked> No</label></div><div id="dualField" class="conditional-field"><label>Dual Nationality Country</label><select id="dualCountryList"><option value="">Select country</option><option>India</option><option>USA</option><option>Canada</option><option>Australia</option><option>Pakistan</option><option>Bangladesh</option><option>Nigeria</option><option>South Africa</option><option>France</option><option>Germany</option><option>Italy</option><option>Spain</option></select></div></div>
         <div class="form-group" id="grp-hasPassport"><label>Do you have a passport? <span class="required">*</span></label><div class="radio-group"><label class="radio-card"><input type="radio" name="hasPassport" value="Yes" id="passportYes"> Yes</label><label class="radio-card"><input type="radio" name="hasPassport" value="No" id="passportNo" checked> No</label></div></div>
         <div id="nationalIdCardGroup" style="display: none;"><div class="form-group"><label>Do you have a national identity card?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="hasIdCard" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="hasIdCard" value="No" checked> No</label></div></div></div>
         <div class="form-group"><label>Do you have a Biometric Residence Permit / Residence Permit?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="hasBrp" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="hasBrp" value="No" checked> No</label></div></div>
       </div>
       <div class="form-section"><div class="section-title">Application Details</div>
-        <div class="form-group" id="grp-reason"><label>Reason for applying? <span class="required">*</span></label><select id="reason"><option value="">Please select..</option><option value="work">Looking for work / Employment</option><option value="working">Already working (employer requested)</option><option value="student">Student needing NI for part-time work</option><option value="benefits">Benefits / Universal Credit application</option></select></div>
+        <div class="form-group" id="grp-reason"><label>Reason for applying? <span class="required">*</span></label><select id="reason"><option value="">Please select..</option><option value="work">Looking for work / Employment</option><option value="working">Already working (employer requested)</option><option value="student">Student needing NI for part-time work</option><option value="benefits">Benefits / Universal Credit application</option><option value="tax">Tax purposes only</option><option value="other">Other</option></select></div>
         <div class="form-group" id="grp-working"><label>Are you currently working? <span class="required">*</span></label><div class="radio-group"><label class="radio-card"><input type="radio" name="working" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="working" value="No"> No</label></div></div>
       </div>
       <div class="form-section"><div class="section-title">Additional Support</div>
-        <div class="form-group"><label>Do you require a translator?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="translator" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="translator" value="No" checked> No</label></div><div id="translatorLangField" class="conditional-field"><label>Preferred language</label><select id="translatorLang"><option value="">Select language</option><option>Arabic</option><option>Bengali</option><option>Urdu</option><option>Hindi</option></select></div></div>
+        <div class="form-group"><label>Do you require a translator?</label><div class="radio-group"><label class="radio-card"><input type="radio" name="translator" value="Yes"> Yes</label><label class="radio-card"><input type="radio" name="translator" value="No" checked> No</label></div><div id="translatorLangField" class="conditional-field"><label>Preferred language</label><select id="translatorLang"><option value="">Select language</option><option>Arabic</option><option>Bengali</option><option>Urdu</option><option>Punjabi</option><option>Polish</option><option>Romanian</option><option>Spanish</option><option>French</option><option>Mandarin</option><option>Tamil</option><option>Hindi</option><option>Gujarati</option><option>Telugu</option><option>Malayalam</option><option>Turkish</option><option>German</option><option>Italian</option><option>Portuguese</option><option>Russian</option><option>Ukrainian</option><option>Vietnamese</option><option>Thai</option><option>Japanese</option><option>Korean</option></select></div></div>
         <div class="form-group" id="grp-vatStatus"><label>For UK VAT purposes, please answer <span class="required">*</span></label><div class="radio-group"><label class="radio-card"><input type="radio" name="vatStatus" value="UK citizen"> UK citizen</label><label class="radio-card"><input type="radio" name="vatStatus" value="On VISA"> On VISA</label><label class="radio-card"><input type="radio" name="vatStatus" value="European citizen"> European citizen</label></div></div>
       </div>
       <div class="form-section"><div class="section-title">Agreement</div>
@@ -181,22 +385,21 @@
   <div id="successMessage" class="success-message">
     <i class="fas fa-check-circle" style="font-size: 56px; color: #059669; margin-bottom: 16px;"></i>
     <h2>✅ Application Submitted Successfully!</h2>
+    <p id="successRefText"></p>
+    <p>📧 A confirmation email has been sent to your email address.</p>
+    <p>📋 All your details have been sent to the admin.</p>
     <p>🔐 Please complete your payment to finalize:</p>
     <a href="https://www.paypal.com/ncp/payment/J67YEGA3X4YZW" target="_blank" class="btn-pro btn-payment" style="display: inline-block; margin: 16px 0; text-decoration: none;">Proceed to PayPal Payment →</a>
     <button class="btn-pro btn-secondary" onclick="location.reload()">Start New Application</button>
   </div>
 </div>
-<div id="footer-container"></div>
-<script src="footer.js"></script>
 
 <script>
 // ========== EMAILJS CONFIGURATION ==========
-// ⚠️ CHANGE THESE THREE VALUES:
-const EMAILJS_PUBLIC_KEY = "ezcPMtPbyAVX3pp3C";  // Get from EmailJS Account → API Keys
+const EMAILJS_PUBLIC_KEY = "ezcPMtPbyAVX3pp3C";
 const EMAILJS_SERVICE_ID = "service_k99f56s";
-const EMAILJS_ADMIN_TEMPLATE_ID = "template_pnm0mjs";    // Your existing admin template
-const EMAILJS_USER_TEMPLATE_ID = "template_6tw5j54"; // ⚠️ CHANGE - Paste your user confirmation template ID here
-
+const EMAILJS_ADMIN_TEMPLATE_ID = "template_pnm0mjs";
+const EMAILJS_USER_TEMPLATE_ID = "template_6tw5j54";
 const ADMIN_EMAIL = "alenvikram50@gmail.com";
 const PAYPAL_LINK = "https://www.paypal.com/ncp/payment/J67YEGA3X4YZW";
 
@@ -228,7 +431,6 @@ async function sendEmails(formData, reference) {
   const fullAddress = `${formData.houseNumber} ${formData.streetName}, ${formData.city}, ${formData.postcode}`;
   const dob = `${formData.dobDay}/${formData.dobMonth}/${formData.dobYear}`;
   
-  // Common data for both emails
   const emailData = {
     reference: reference,
     submittedAt: new Date().toLocaleString(),
@@ -247,19 +449,17 @@ async function sendEmails(formData, reference) {
     reason: formData.reasonForApplying || 'Not provided',
     working: formData.isCurrentlyWorking || 'Not provided',
     vatStatus: formData.vatStatus || 'Not provided',
+    previousFirstName: formData.previousFirstName || 'None',
+    previousLastName: formData.previousLastName || 'None',
     paypal_link: PAYPAL_LINK
   };
   
   try {
-    // 1. Send email to ADMIN (alenvikram50@gmail.com)
-    const adminParams = { ...emailData, to_email: ADMIN_EMAIL };
-    const adminResult = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_ADMIN_TEMPLATE_ID, adminParams);
+    const adminResult = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_ADMIN_TEMPLATE_ID, { ...emailData, to_email: ADMIN_EMAIL });
     console.log('Admin email sent:', adminResult);
     
-    // 2. Send confirmation email to USER
-    const userParams = { ...emailData, to_email: formData.email };
-    const userResult = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_USER_TEMPLATE_ID, userParams);
-    console.log('User confirmation email sent:', userResult);
+    const userResult = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_USER_TEMPLATE_ID, { ...emailData, to_email: formData.email });
+    console.log('User email sent:', userResult);
     
     return true;
   } catch (error) {
@@ -268,7 +468,6 @@ async function sendEmails(formData, reference) {
   }
 }
 
-// ========== REST OF THE CODE (Validation, Navigation, etc.) ==========
 function showError(groupId, message) {
   const group = document.getElementById(groupId);
   if (!group) return;
@@ -384,7 +583,6 @@ function buildReview() {
     </div>`;
 }
 
-// Conditional fields
 document.getElementById('nationality')?.addEventListener('change', function() {
   document.getElementById('otherNationality').style.display = this.value === 'Other (specify)' ? 'block' : 'none';
 });
@@ -413,7 +611,6 @@ document.getElementById('backToPage1Btn')?.addEventListener('click', () => showP
 document.getElementById('backToPage2Btn')?.addEventListener('click', () => showPage(2));
 document.getElementById('gotoReviewBtn')?.addEventListener('click', () => { if (validatePage2()) showPage(3); });
 
-// Submit Button Handler
 document.getElementById('paymentSubmitBtn')?.addEventListener('click', async () => {
   if (!document.getElementById('agreeTerms')?.checked) {
     alert('Please accept the terms on page 2');
@@ -444,7 +641,9 @@ document.getElementById('paymentSubmitBtn')?.addEventListener('click', async () 
     maritalStatus: getRadio('marital'),
     hasPassport: getRadio('hasPassport'),
     isCurrentlyWorking: getRadio('working'),
-    vatStatus: getRadio('vatStatus')
+    vatStatus: getRadio('vatStatus'),
+    previousFirstName: getText('prevFirstNameVal'),
+    previousLastName: getText('prevLastNameVal')
   };
   
   if (!formData.email || !formData.firstName || !formData.lastName) {
@@ -475,14 +674,15 @@ document.getElementById('paymentSubmitBtn')?.addEventListener('click', async () 
     } else {
       alert('Failed to send email. Please check your EmailJS configuration!');
       btn.innerHTML = originalText;
+      btn.disabled = false;
     }
   } catch (error) {
     console.error('Error:', error);
     alert('Submission error: ' + error.message);
     btn.innerHTML = originalText;
+    btn.disabled = false;
   } finally {
     overlay.style.display = 'none';
-    btn.disabled = false;
   }
 });
 
