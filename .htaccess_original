@@ -1,21 +1,28 @@
-# Turn on Rewrite Engine
 RewriteEngine On
 
 # X-Robots-Tag header
-Header set X-Robots-Tag "index, follow"
 
-# WWW to non-WWW redirect
-RewriteCond %{HTTP_HOST} ^www\.booknino\.co\.uk [NC]
+<IfModule mod_headers.c>
+Header set X-Robots-Tag "index, follow"
+</IfModule>
+
+# Force HTTPS + Non-WWW
+
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^[www.booknino.co.uk$](http://www.booknino.co.uk$) [NC]
 RewriteRule ^(.*)$ https://booknino.co.uk/$1 [R=301,L]
 
-# 1. Don't touch /blog (WordPress ka folder)
+# Don't touch /blog
+
 RewriteRule ^blog/ - [L]
 
-# 2. Redirect /page.html -> /page (SEO friendly)
-RewriteCond %{THE_REQUEST} "\s/+(.+?)\.html[\s?]"
+# Redirect /page.html -> /page
+
+RewriteCond %{THE_REQUEST} \s/+(.+?).html[\s?] [NC]
 RewriteRule ^ %1 [R=301,L]
 
-# 3. /page ko internally /page.html se serve karo
+# Internally serve /page from /page.html
+
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME}.html -f
