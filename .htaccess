@@ -1,25 +1,29 @@
 RewriteEngine On
 
 # X-Robots-Tag
+
+<IfModule mod_headers.c>
 Header set X-Robots-Tag "index, follow"
+</IfModule>
 
-# WWW → Non-WWW
-RewriteCond %{HTTP_HOST} ^www\.booknino\.co\.uk$ [NC]
-RewriteRule ^(.*)$ https://booknino.co.uk/$1 [R=301,L]
+# Force HTTPS + Non-WWW in a single redirect
 
-# HTTPS Force
-RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^[www.booknino.co.uk$](http://www.booknino.co.uk$) [NC]
 RewriteRule ^(.*)$ https://booknino.co.uk/$1 [R=301,L]
 
 # Don't touch /blog
+
 RewriteRule ^blog/ - [L]
 
-# Redirect /page.html → /page
-RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+# Redirect .html URLs to clean URLs
+
+RewriteCond %{THE_REQUEST} \s/([^.]+).html[\s?] [NC]
 RewriteRule ^ %1 [R=301,L]
 
-# Internally serve /page from /page.html
-RewriteCond %{REQUEST_FILENAME} !-d
+# Internally serve .html files
+
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-RewriteRule ^(.+)$ $1.html [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^/]+)/?$ $1.html [L]
