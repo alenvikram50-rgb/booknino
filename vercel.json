@@ -1,3 +1,17 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "booknino.co.uk"
+        }
+      ],
+      "destination": "https://www.booknino.co.uk/:path*",
+      "permanent": true
+    }
+  ]
 }
